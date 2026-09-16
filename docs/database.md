@@ -174,7 +174,31 @@ timestamp
     createdAt
 
 
+## relationships
 
+
+    User 1 ─── 1 Profile
+
+    User 1 ─── N Resume
+
+    User 1 ─── N Application
+    Job 1 ─── N Application
+
+    User 1 ─── N SavedJob
+    Job 1 ─── N SavedJob
+
+    User 1 ─── N ResumeAnalysis
+    Resume 1 ─── N ResumeAnalysis
+    Job 1 ─── N ResumeAnalysis
+
+    User 1 ─── 1 Subscription
+
+    Subscription 1 ─── N Payment
+
+    User 1 ─── N Company
+    Company 1 ─── N Job
+
+    User 1 ─── N Job
 
 
 
