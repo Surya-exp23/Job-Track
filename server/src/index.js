@@ -14,6 +14,7 @@ connectDB().
 then(()=>{
     app.listen(PORT,()=>{
         console.log(`console is running at the port: ${PORT}`)
+        console.log("CORS_ORIGIN:", process.env.CORS_ORIGIN);
     })
 })
 .catch((err)=>{
