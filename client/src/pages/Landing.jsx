@@ -79,10 +79,10 @@ const Landing = () => {
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-20 text-center sm:px-6 lg:px-8 lg:pt-28">
-          <span className="inline-flex items-center gap-2 rounded-full border border-lime-400/30 bg-lime-400/10 px-4 py-1.5 text-sm font-medium text-lime-300">
+          {/* <span className="inline-flex items-center gap-2 rounded-full border border-lime-400/30 bg-lime-400/10 px-4 py-1.5 text-sm font-medium text-lime-300">
             <span className="h-2 w-2 animate-pulse rounded-full bg-lime-400" />
             The job hunt, engineered
-          </span>
+          </span> */}
           <h1 className="mx-auto mt-6 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             TRACK{" "}
             <MascotWave className="h-[0.9em] w-[0.9em] align-[-0.12em]" />{" "}
@@ -100,7 +100,7 @@ const Landing = () => {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               to="/register"
-              className="w-full rounded-xl bg-lime-400 px-8 py-4 text-base font-bold text-zinc-950 shadow-[0_0_32px_rgba(163,230,53,0.4)] transition hover:bg-lime-300 sm:w-auto"
+              className="w-full rounded-xl bg-lime-400 px-8 py-4 text-base font-bold text-zinc-950 transition hover:bg-lime-300 sm:w-auto"
             >
               Start tracking 
             </Link>
