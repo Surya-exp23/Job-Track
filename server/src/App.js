@@ -7,7 +7,7 @@ import jobRoutes from "./routes/job.routes.js";
 import applicationRoutes from "./routes/application.routes.js";
 import savedJobRoutes from "./routes/savedJob.routes.js";
 
-
+import profileRoutes from "./routes/profile.routes.js";
 
 
 const app= express()
@@ -32,6 +32,7 @@ app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
 
 app.use("/api/saved-jobs", savedJobRoutes);
+app.use("/api/profile", profileRoutes);
 
 
 export {app}
