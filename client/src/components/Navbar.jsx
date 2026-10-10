@@ -66,7 +66,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/register"
-                className="rounded-xl bg-lime-400 px-3 py-2 text-sm font-bold text-zinc-950 shadow-[0_0_14px_rgba(163,230,53,0.35)] transition hover:bg-lime-300 sm:px-4"
+                className=" beam-hover rounded-xl bg-lime-400 px-3 py-2 text-sm font-bold text-zinc-950 shadow-[0_0_14px_rgba(163,230,53,0.35)] transition hover:bg-lime-400 sm:px-4"
               >
                 Get started
               </Link>

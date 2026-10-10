@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
 import { useAuth } from "../context/AuthContext";
+import LoadingButton from "../components/loadingbutton.jsx";
 
 const RESEND_COOLDOWN = 60;
 
@@ -158,13 +159,10 @@ const VerifyEmail = () => {
           </div>
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded-xl bg-lime-400 px-4 py-3 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.25)] transition hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {loading ? "Verifying..." : "Verify and enter"}
-        </button>
+        <LoadingButton loading={loading} loadingText="Verifying">
+          Verify and enter
+        </LoadingButton>
+
 
         <p className="text-center text-sm text-zinc-500">
           No code?{" "}

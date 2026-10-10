@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
 import { useAuth } from "../context/AuthContext";
+import LoadingButton from "../components/loadingbutton.jsx";
 
 const inputClass =
   "w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20";
@@ -90,13 +91,10 @@ const Login = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded-xl bg-lime-400 px-4 py-3 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.25)] transition hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {loading ? "Logging in..." : "Log in"}
-        </button>
+        <LoadingButton loading={loading} loadingText="Logging in">
+        Log in
+      </LoadingButton>
+
       </form>
     </AuthLayout>
   );

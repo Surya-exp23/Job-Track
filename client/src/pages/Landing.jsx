@@ -100,13 +100,13 @@ const Landing = () => {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               to="/register"
-              className="w-full rounded-xl bg-lime-400 px-8 py-4 text-base font-bold text-zinc-950 transition hover:bg-lime-300 sm:w-auto"
+              className="beam-hover w-full rounded-xl bg-lime-400 px-8 py-3 text-base font-bold text-zinc-950 shadow-[0_0_32px_rgba(163,230,53,0.4)] transition sm:w-auto"
             >
               Start tracking 
             </Link>
             <Link
               to="/login"
-              className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-8 py-4 text-base font-semibold text-white transition hover:border-zinc-500 sm:w-auto"
+              className="beam-hover w-full rounded-xl border border-zinc-700 bg-zinc-900 px-10 py-3 text-base font-semibold text-white transition hover:border-zinc-500 sm:w-auto"
             >
               Log in
             </Link>
