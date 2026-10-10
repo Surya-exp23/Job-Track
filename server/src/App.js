@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import companyRoutes from "./routes/company.routes.js";
 import jobRoutes from "./routes/job.routes.js";
+import applicationRoutes from "./routes/application.routes.js";
+import savedJobRoutes from "./routes/savedJob.routes.js";
 
 
 
@@ -27,7 +29,9 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/companies", companyRoutes);
 app.use("/api/jobs", jobRoutes);
+app.use("/api/applications", applicationRoutes);
 
+app.use("/api/saved-jobs", savedJobRoutes);
 
 
 export {app}

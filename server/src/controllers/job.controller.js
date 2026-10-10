@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import{ job} from "../models/job.model.js";
 import {company} from "../models/company.model.js";
 import {Application} from "../models/application.model.js";
-
+import {SavedJob} from "../models/savedJob.model.js";
 
 const REMOTE_TYPES = ["Remote", "On-site", "Hybrid"];
 const EMPLOYMENT_TYPES = ["Full-time", "Part-time", "Contract", "Internship"];
@@ -575,6 +575,10 @@ const deleteJob = async (req, res, next) => {
         message: "Cannot delete a job with applications. Close it instead.",
       });
     }
+    await SavedJob.deleteMany({ jobId: job._id });
+
+    await job.deleteOne();
+
 
     await job.deleteOne();
 
