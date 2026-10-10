@@ -22,6 +22,7 @@ const signAccessToken = (userId) => {
 const signRefreshToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: `${REFRESH_TOKEN_EXPIRES_IN_DAYS}d`,
+    jwtid: crypto.randomUUID(),
   });
 };
 

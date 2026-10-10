@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import{ job} from "../models/job.model.js";
-import {company} from "../models/company.model.js";
+import { Job } from "../models/Jobs.model.js"
+import {Company} from "../models/company.model.js";
 import {Application} from "../models/application.model.js";
 import {SavedJob} from "../models/savedJob.model.js";
 

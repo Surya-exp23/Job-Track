@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import VerifyEmail from "./pages/VerifyEmail";
 import Dashboard from "./pages/Dashboard";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <BackToTop />
       </AuthProvider>
     </BrowserRouter>
   );

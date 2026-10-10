@@ -24,6 +24,7 @@ export const MascotVideo = ({ className = "" }) => (
     disablePictureInPicture
     aria-label="JobTrack mascot walking"
     className={`inline-block rounded-full object-cover ${className}`}
+    onContextMenu={(e) => e.preventDefault()}
   />
 );
 
@@ -36,8 +37,10 @@ export const MascotWave = ({ className = "" }) => (
     muted
     playsInline
     disablePictureInPicture
+    controls={false}
     aria-label="JobTrack mascot waving hello"
     className={`inline-block rounded-full object-cover ${className}`}
+    onContextMenu={(e) => e.preventDefault()}
   />
 );
 

@@ -14,6 +14,8 @@ export const AuthProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
 
+  // On app load, try to restore the session from the refresh cookie.
+  // If it fails, the user is simply logged out — no error shown.
   useEffect(() => {
     const restore = async () => {
       try {
@@ -38,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (form) => {
-
+    // 201, no session yet — the user must verify their email first
     await authApi.register(form);
   };
 
@@ -64,7 +66,9 @@ export const AuthProvider = ({ children }) => {
     setAccessToken(null);
   };
 
-
+  // Authenticated fetch for future API calls (jobs, applications, ...).
+  // Attaches the token, and on a 401 tries one silent refresh before
+  // giving up and logging the user out.
   const authFetch = useCallback(
     async (path, options = {}) => {
       const doFetch = (token) =>

@@ -80,7 +80,7 @@ const Register = () => {
               required
               value={form.firstName}
               onChange={set("firstName")}
-              placeholder="Ada"
+              placeholder="Sam"
               className={inputClass}
             />
           </div>
@@ -92,7 +92,7 @@ const Register = () => {
               required
               value={form.lastName}
               onChange={set("lastName")}
-              placeholder="Lovelace"
+              placeholder="Smith"
               className={inputClass}
             />
           </div>
@@ -152,7 +152,7 @@ const Register = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-xl bg-lime-400 px-4 py-3 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.25)] transition hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-xl bg-lime-400 px-4 py-3 text-sm font-bold text-zinc-950 shadow-[0_0_14px_rgba(163,230,53,0.25)] transition hover:bg-lime-300 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? "Creating account..." : "Create account"}
         </button>
