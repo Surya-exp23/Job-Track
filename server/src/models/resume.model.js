@@ -25,6 +25,11 @@ const resumeSchema = new Schema(
       type: String,
       enum: ["PDF", "DOC", "DOCX"],
       required: true,
+      cloudinaryId: { 
+        type: String, 
+        trim: true 
+      },
+
     },
 
     fileSize: {

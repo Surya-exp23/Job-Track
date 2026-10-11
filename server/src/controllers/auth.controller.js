@@ -32,6 +32,13 @@ const hashToken = (token) => {
   return crypto.createHash("sha256").update(token).digest("hex");
 };
 
+const hashOtp = (otp) => {
+  return crypto
+    .createHmac("sha256", process.env.OTP_PEPPER)
+    .update(otp)
+    .digest("hex");
+};
+
 const refreshCookieOptions = () => {
   const isProduction = process.env.NODE_ENV === "production";
 
@@ -69,7 +76,7 @@ const issueSession = async (user, res, deviceInfo) => {
 const createAndSendOtp = async (user) => {
   const otp = crypto.randomInt(100000, 1000000).toString();
 
-  user.emailOtpHash = hashToken(otp);
+  user.emailOtpHash = hashOtp(otp);
   user.emailOtpExpiresAt = new Date(Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000);
   user.emailOtpAttempts = 0;
   user.lastOtpSentAt = new Date();
@@ -77,6 +84,10 @@ const createAndSendOtp = async (user) => {
 
   await sendVerificationOtp(user.email, otp);
 };
+
+
+
+
 
 const register = async (req, res, next) => {
   try {
@@ -189,10 +200,9 @@ const verifyEmail = async (req, res, next) => {
       });
     }
 
-    // timingSafeEqual avoids leaking information through
-    // response-time differences during comparison
+    
     const expected = Buffer.from(user.emailOtpHash, "hex");
-    const actual = Buffer.from(hashToken(otp), "hex");
+    const actual = Buffer.from(hashOtp(otp), "hex");
 
     const isValid =
       expected.length === actual.length &&
