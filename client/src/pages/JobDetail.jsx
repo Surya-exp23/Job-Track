@@ -101,7 +101,11 @@ const ApplyModal = ({ jobId, onClose, onSuccess }) => {
           </div>
         ) : resumes.length === 0 ? (
           <p className="mt-6 rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-sm text-zinc-400">
-            You need a resume to apply. The Resumes section is coming up next — upload one there first.
+            You need a resume to apply.{" "}
+                <Link to="/resumes" className="text-lime-300 underline-offset-2 hover:underline">
+                Upload one here
+                </Link>{" "}
+                first.
           </p>
         ) : (
           <form onSubmit={handleSubmit} className="mt-4">

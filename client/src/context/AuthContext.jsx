@@ -71,16 +71,17 @@ export const AuthProvider = ({ children }) => {
   // giving up and logging the user out.
   const authFetch = useCallback(
     async (path, options = {}) => {
+      const isFormData = options.body instanceof FormData;
       const doFetch = (token) =>
-        fetch(`${API_BASE}${path}`, {
-          ...options,
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            ...(options.headers || {}),
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
-        });
+      fetch(`${API_BASE}${path}`, {
+        ...options,
+        credentials: "include",
+        headers: {
+          ...(isFormData ? {} : { "Content-Type": "application/json" }),
+          ...(options.headers || {}),
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+      });
 
       let res = await doFetch(accessToken);
 

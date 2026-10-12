@@ -76,6 +76,14 @@ const Navbar = () => {
                 >
                   Profile
                 </Link>
+                {user.role === "CANDIDATE" && (
+                    <Link
+                      to="/resumes"
+                      className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
+                    >
+                      Resumes
+                    </Link>
+                  )}
               <button
                 onClick={handleLogout}
                 className="rounded-xl bg-white/10 px-3 py-2 text-sm font-medium text-white transition hover:bg-white/15 sm:px-4"
