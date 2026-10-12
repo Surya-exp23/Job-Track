@@ -47,6 +47,7 @@ export const AuthProvider = ({ children }) => {
   const verifyEmail = async (email, otp) => {
     const { data } = await authApi.verifyEmail({ email, otp });
     applySession(data);
+    return data.user;
   };
 
   const resendOtp = (email) => authApi.resendOtp(email);
@@ -54,6 +55,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const { data } = await authApi.login({ email, password });
     applySession(data);
+    return data.user;
   };
 
   const logout = async () => {

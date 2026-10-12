@@ -23,8 +23,10 @@ const Login = () => {
     setLoading(true);
 
     try {
-      await login(email.trim(), password);
-      navigate(location.state?.from || "/dashboard", { replace: true });
+      const loggedInUser = await login(email.trim(), password);
+      const home = loggedInUser?.role === "RECRUITER" ? "/dashboard" : "/jobs";
+      navigate(location.state?.from || home, { replace: true });
+
     } catch (err) {
       // Unverified accounts get a 403 — send them to the OTP screen
       if (err.status === 403) {

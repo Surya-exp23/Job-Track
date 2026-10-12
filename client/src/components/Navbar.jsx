@@ -1,12 +1,28 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import mascot from "../assets/mascot.webp";
+
+const candidateLinks = [
+  { to: "/profile", label: "My Profile" },
+  { to: "/resumes", label: "My Resumes" },
+  { to: "/applications", label: "My Applications" },
+  { to: "/saved-jobs", label: "Saved Jobs" },
+];
+
+const recruiterLinks = [
+  { to: "/profile", label: "My Profile" },
+  { to: "/companies", label: "My Companies" },
+  { to: "/my-jobs", label: "My Jobs" },
+];
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -15,10 +31,36 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close the menu on outside click, Escape, or route change
+  useEffect(() => {
+    const onClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setOpen(false);
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
   const handleLogout = async () => {
+    setOpen(false);
     await logout();
     navigate("/");
   };
+
+  const isRecruiter = user?.role === "RECRUITER";
+  const home = !user ? "/" : isRecruiter ? "/dashboard" : "/jobs";
+  const menuLinks = isRecruiter ? recruiterLinks : candidateLinks;
+  const initial = (user?.email?.[0] || "?").toUpperCase();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
@@ -29,7 +71,7 @@ const Navbar = () => {
             : "border-white/5 bg-zinc-900/40 shadow-lg shadow-black/20 backdrop-blur-md"
         }`}
       >
-        <Link to="/" className="flex items-center gap-2.5">
+        <Link to={home} className="flex items-center gap-2.5">
           <img
             src={mascot}
             alt="JobTrack"
@@ -41,87 +83,61 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <Link
-            to="/jobs"
-            className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4">
-            Find jobs
-          </Link>
-          {user ? (
-            <>
-              {user.role === "CANDIDATE" && (
-             <>
-                <Link
-                  to="/applications"
-                  className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4">
-                  Applications
-                </Link>
-                <Link
-                  to="/saved-jobs"
-                  className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
-                >
-                  Saved
-                </Link>
-            </>
-        )}
-        {user.role === "RECRUITER" && (
-          <>
-            <Link
-              to="/companies"
-              className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
-            >
-              Companies
-            </Link>
-            <Link
-                to="/my-jobs"
-                className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4">
-                My Jobs
-            </Link>
-          </>
-            
-          )}
-
-
-              <Link
-                to="/dashboard"
-                className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
-              >
-                Dashboard
-              </Link>
-              <Link
-                  to="/profile"
-                  className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
-                >
-                  Profile
-                </Link>
-                {user.role === "CANDIDATE" && (
-                    <Link
-                      to="/resumes"
-                      className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
-                    >
-                      Resumes
-                    </Link>
-                  )}
-              <button
-                onClick={handleLogout}
-                className="rounded-xl bg-white/10 px-3 py-2 text-sm font-medium text-white transition hover:bg-white/15 sm:px-4"
-              >
-                Log out
-              </button>
-            </>
-          ) : (
+          {!user ? (
             <>
               <Link
                 to="/login"
-                className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
+                className="beam-hover rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition sm:px-4"
               >
                 Log in
               </Link>
               <Link
                 to="/register"
-                className=" beam-hover rounded-xl bg-lime-400 px-3 py-2 text-sm font-bold text-zinc-950 shadow-[0_0_14px_rgba(163,230,53,0.35)] transition hover:bg-lime-400 sm:px-4"
+                className="beam-hover rounded-xl bg-lime-400 px-3 py-2 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.35)] transition sm:px-4"
               >
                 Get started
               </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to={home}
+                className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
+              >
+                Dashboard
+              </Link>
+              <div className="relative" ref={menuRef}>
+                <button
+                  onClick={() => setOpen((o) => !o)}
+                  aria-label="Account menu"
+                  aria-expanded={open}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-lime-400 font-display text-sm font-bold text-zinc-950 transition hover:brightness-110"
+                >
+                  {initial}
+                </button>
+                {open && (
+                  <div className="absolute right-0 top-12 w-52 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl shadow-black/60">
+                    <p className="truncate border-b border-zinc-800 px-4 py-3 text-xs text-zinc-500">
+                      {user.email}
+                    </p>
+                    {menuLinks.map((l) => (
+                      <Link
+                        key={l.to}
+                        to={l.to}
+                        className="block px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white"
+                      >
+                        {l.label}
+                      </Link>
+                    ))}
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full border-t border-zinc-800 px-4 py-2.5 text-left text-sm text-red-400 transition hover:bg-white/5"
+                    >
+                      Log out
+                    </button>
+                  </div>
+                )}
+              </div>
             </>
           )}
         </div>

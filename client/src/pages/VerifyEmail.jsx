@@ -65,8 +65,9 @@ const VerifyEmail = () => {
     setLoading(true);
 
     try {
-      await verifyEmail(email.trim(), code);
-      navigate("/dashboard", { replace: true });
+      const verifiedUser = await verifyEmail(email.trim(), code);
+      const home = verifiedUser?.role === "RECRUITER" ? "/dashboard" : "/jobs";
+      navigate(home, { replace: true });
     } catch (err) {
       setError(err.message || "Verification failed. Please try again.");
     } finally {
