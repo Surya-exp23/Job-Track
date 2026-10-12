@@ -8,6 +8,8 @@ import VerifyEmail from "./pages/VerifyEmail";
 import Dashboard from "./pages/Dashboard";
 import BackToTop from "./components/BackToTop";
 import Jobs from "./pages/Jobs";
+import JobDetail from "./pages/JobDetail";
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
           />
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:id" element={<JobDetail />} />
         </Routes>
         <BackToTop />
       </AuthProvider>
