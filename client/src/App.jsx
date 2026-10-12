@@ -10,6 +10,7 @@ import BackToTop from "./components/BackToTop";
 import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import MyApplications from "./pages/MyApplications";
+import SavedJobs from "./pages/SavedJobs";
 
 
 function App() {
@@ -40,6 +41,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/saved-jobs"
+            element={
+              <ProtectedRoute>
+                <SavedJobs />
+              </ProtectedRoute>
+            }
+          />
+
 
         </Routes>
         <BackToTop />

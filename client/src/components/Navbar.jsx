@@ -48,6 +48,22 @@ const Navbar = () => {
           </Link>
           {user ? (
             <>
+              {user.role === "CANDIDATE" && (
+             <>
+                <Link
+                  to="/applications"
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4">
+                  Applications
+                </Link>
+                <Link
+                  to="/saved-jobs"
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
+                >
+                  Saved
+                </Link>
+            </>
+        )}
+
               <Link
                 to="/dashboard"
                 className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"

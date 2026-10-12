@@ -5,6 +5,9 @@ import { applicationsApi } from "../api/applications";
 import { resumesApi } from "../api/resumes";
 import { useAuth } from "../context/AuthContext";
 import LoadingButton from "../components/LoadingButton";
+import SaveButton from "../components/SaveButton";
+
+
 
 const formatSalary = (salary) => {
   if (!salary || (salary.min == null && salary.max == null)) return null;
@@ -321,6 +324,7 @@ const JobDetail = () => {
                         {user ? "Apply now" : "Log in to apply"}
                       </button>
                     ))}
+                    <SaveButton jobId={id} className="mt-3 w-full" />
                 </div>
               </div>
             </div>
