@@ -16,6 +16,7 @@ import Resumes from "./pages/Resumes";
 import Companies from "./pages/Companies";
 import JobForm from "./pages/JobForm";
 import MyJobs from "./pages/MyJobs";
+import Applicants from "./pages/Applicants";
 
 
 function App() {
@@ -81,6 +82,15 @@ function App() {
           <Route path="/jobs/new" element={<ProtectedRoute><JobForm /></ProtectedRoute>} />
           <Route path="/jobs/:id/edit" element={<ProtectedRoute><JobForm /></ProtectedRoute>} />
           <Route path="/my-jobs" element={<ProtectedRoute><MyJobs /></ProtectedRoute>} />
+            
+          <Route
+            path="/jobs/:id/applicants"
+            element={
+              <ProtectedRoute>
+                <Applicants />
+              </ProtectedRoute>
+            }
+          />
 
         </Routes>
         <BackToTop />
