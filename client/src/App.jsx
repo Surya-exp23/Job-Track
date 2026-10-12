@@ -14,6 +14,8 @@ import SavedJobs from "./pages/SavedJobs";
 import Profile from "./pages/Profile";
 import Resumes from "./pages/Resumes";
 import Companies from "./pages/Companies";
+import JobForm from "./pages/JobForm";
+import MyJobs from "./pages/MyJobs";
 
 
 function App() {
@@ -76,7 +78,9 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          <Route path="/jobs/new" element={<ProtectedRoute><JobForm /></ProtectedRoute>} />
+          <Route path="/jobs/:id/edit" element={<ProtectedRoute><JobForm /></ProtectedRoute>} />
+          <Route path="/my-jobs" element={<ProtectedRoute><MyJobs /></ProtectedRoute>} />
 
         </Routes>
         <BackToTop />
