@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { jobsApi } from "../api/jobs";
 import { profileApi } from "../api/profile";
 import { useAuth } from "../context/AuthContext";
 import roboHero from "../assets/robo-hero-v1.webp";
+import roboSad from "../assets/robo-sad.webp";
+
 
 // Must match the enums GET /api/jobs validates on the backend
 const REMOTE_TYPES = ["Remote", "On-site", "Hybrid"];
@@ -43,8 +45,7 @@ const timeAgo = (value) => {
 const inputClass =
   "h-11 rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition focus:border-lime-400";
 
-const selectClass =
-  "h-11 rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 outline-none transition focus:border-lime-400";
+
 
 const JobCard = ({ job }) => {
   const company = job.companyId || {};
@@ -98,6 +99,107 @@ const JobCard = ({ job }) => {
   );
 };
 
+
+const FilterSelect = ({ value, onChange, placeholder, options }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const onClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  const pick = (v) => {
+    onChange(v);
+    setOpen(false);
+  };
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className={`flex h-11 w-full cursor-pointer items-center justify-between gap-2 rounded-xl border bg-zinc-900 px-3 text-sm outline-none transition hover:border-zinc-600 ${
+          open ? "border-lime-400" : "border-zinc-800"
+        } ${value ? "text-zinc-100" : "text-zinc-400"}`}
+      >
+        <span className="truncate">{value || placeholder}</span>
+        <svg
+          className={`h-4 w-4 shrink-0 text-zinc-500 transition-transform ${open ? "rotate-180" : ""}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute left-0 right-0 top-full z-30 mt-2 overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 shadow-2xl shadow-black/60">
+          <button
+            type="button"
+            onClick={() => pick("")}
+            className={`block w-full px-3 py-2.5 text-left text-sm transition hover:bg-white/5 ${
+              !value ? "font-semibold text-lime-300" : "text-zinc-400"
+            }`}
+          >
+            {placeholder}
+          </button>
+          {options.map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => pick(t)}
+              className={`block w-full px-3 py-2.5 text-left text-sm transition hover:bg-white/5 ${
+                value === t ? "font-semibold text-lime-300" : "text-zinc-200"
+              }`}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+
+const EmptyState = ({ title, message, actionLabel, onAction }) => (
+  <div className="mx-auto mt-8 flex max-w-2xl flex-col items-center justify-center gap-8 p-8 sm:flex-row sm:gap-12">
+    <div className="text-center sm:text-left">
+      <p className="font-display text-xl font-bold text-white">{title}</p>
+      <p className="mt-2 text-sm text-zinc-400">{message}</p>
+      {actionLabel && (
+        <button
+          onClick={onAction}
+          className="mt-5 rounded-xl bg-lime-400 px-6 py-2 text-sm font-bold text-zinc-950 transition hover:brightness-110"
+        >
+          {actionLabel}
+        </button>
+      )}
+    </div>
+    <img
+      src={roboSad}
+      alt="No jobs found"
+      className="w-24 shrink-0 sm:w-56"
+      loading="lazy"
+    />
+  </div>
+);
+
 const Jobs = () => {
   const { user, authFetch } = useAuth();
   const [query, setQuery] = useState(emptyFilters);
@@ -111,7 +213,7 @@ const Jobs = () => {
 
   const isCandidate = user?.role === "CANDIDATE";
 
-  // Greet the candidate by name in the hero
+
   useEffect(() => {
     if (!isCandidate) return;
     profileApi
@@ -198,11 +300,11 @@ const Jobs = () => {
             <div className="relative mx-auto w-full max-w-56 sm:max-w-64">
               <div className="absolute inset-6 rounded-full bg-lime-400/15 blur-3xl" />
               <img
-                    src={roboHero}
-                    alt="JobTrack robo taking off"
-                    className="w-full"
-                    loading="lazy"
-                />
+                src={roboHero}
+                alt="JobTrack robo taking off"
+                className="w-full"
+                loading="lazy"
+              />
             </div>
           </section>
         ) : (
@@ -240,36 +342,25 @@ const Jobs = () => {
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            <select
+            <FilterSelect
               value={query.remoteType}
-              onChange={(e) => handleSelect("remoteType", e.target.value)}
-              className={selectClass}
-            >
-              <option value="">Remote type</option>
-              {REMOTE_TYPES.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-            <select
+              onChange={(v) => handleSelect("remoteType", v)}
+              placeholder="Remote type"
+              options={REMOTE_TYPES}
+            />
+            <FilterSelect
               value={query.employmentType}
-              onChange={(e) => handleSelect("employmentType", e.target.value)}
-              className={selectClass}
-            >
-              <option value="">Employment</option>
-              {EMPLOYMENT_TYPES.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-            <select
+              onChange={(v) => handleSelect("employmentType", v)}
+              placeholder="Employment"
+              options={EMPLOYMENT_TYPES}
+            />
+            <FilterSelect
               value={query.experienceLevel}
-              onChange={(e) => handleSelect("experienceLevel", e.target.value)}
-              className={selectClass}
-            >
-              <option value="">Experience</option>
-              {EXPERIENCE_LEVELS.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
+              onChange={(v) => handleSelect("experienceLevel", v)}
+              placeholder="Experience"
+              options={EXPERIENCE_LEVELS}
+            />
+
             <input
               value={query.skills}
               onChange={(e) => updateQuery("skills", e.target.value)}
@@ -304,28 +395,23 @@ const Jobs = () => {
             ))}
           </div>
         ) : error ? (
-          <div className="mt-8 rounded-2xl border border-red-900/50 bg-red-950/20 p-8 text-center">
-            <p className="text-sm text-red-300">{error}</p>
-            <button
-              onClick={() => fetchJobs(applied, page)}
-              className="mt-4 rounded-xl bg-white/10 px-6 py-2 text-sm font-medium text-white transition hover:bg-white/15"
-            >
-              Retry
-            </button>
-          </div>
+          <EmptyState
+            title="We couldn't load jobs"
+            message="Something went wrong on our end. Give it a moment and try again."
+            actionLabel="Retry"
+            onAction={() => fetchJobs(applied, page)}
+          />
         ) : jobs.length === 0 ? (
-          <div className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-12 text-center">
-            <p className="text-lg font-semibold text-white">No roles match your filters</p>
-            <p className="mt-1 text-sm text-zinc-400">Try widening the search or clearing filters.</p>
-            {hasFilters && (
-              <button
-                onClick={clearFilters}
-                className="mt-4 rounded-xl bg-lime-400 px-6 py-2 text-sm font-bold text-zinc-950"
-              >
-                Clear filters
-              </button>
-            )}
-          </div>
+          <EmptyState
+            title={hasFilters ? "No roles match your search" : "No jobs posted right now"}
+            message={
+              hasFilters
+                ? "Try different keywords or clear your filters to see everything."
+                : "Keep an eye on this space — fresh roles land here every day."
+            }
+            actionLabel={hasFilters ? "Clear filters" : undefined}
+            onAction={hasFilters ? clearFilters : undefined}
+          />
         ) : (
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {jobs.map((job) => (

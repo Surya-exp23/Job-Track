@@ -83,7 +83,7 @@ const handleSamePageClick = (target) => (e) => {
             : "border-white/5 bg-zinc-900/40 shadow-lg shadow-black/20 backdrop-blur-md"
         }`}
       >
-        <Link to={dashboardLink} onClick={handleSamePageClick(dashboardLink)} className="flex items-center gap-2.5">
+        <Link to={home} onClick={handleSamePageClick(home)} className="flex items-center gap-2.5">
           <img
             src={mascot}
             alt="JobTrack"
@@ -113,7 +113,8 @@ const handleSamePageClick = (target) => (e) => {
           ) : (
             <>
               <Link
-                to={home}
+                to={dashboardLink}
+                onClick={handleSamePageClick(dashboardLink)}
                 className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
               >
                 Dashboard
