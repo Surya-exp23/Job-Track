@@ -11,6 +11,7 @@ import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import MyApplications from "./pages/MyApplications";
 import SavedJobs from "./pages/SavedJobs";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -46,6 +47,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <SavedJobs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
               </ProtectedRoute>
             }
           />
