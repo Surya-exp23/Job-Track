@@ -8,6 +8,7 @@ import applicationRoutes from "./routes/application.routes.js";
 import savedJobRoutes from "./routes/savedJob.routes.js";
 import profileRoutes from "./routes/profile.routes.js";
 import resumeAnalysisRoutes from "./routes/resumeAnalysis.routes.js";
+import resumeRoutes from "./routes/resume.routes.js";
 
 
 const app= express()
@@ -35,6 +36,8 @@ app.use("/api/saved-jobs", savedJobRoutes);
 app.use("/api/profile", profileRoutes);
 
 app.use("/api/resume-analysis", resumeAnalysisRoutes);
+app.use("/api/resumes", resumeRoutes);
+
 
 
 
