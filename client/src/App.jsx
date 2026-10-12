@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import VerifyEmail from "./pages/VerifyEmail";
 import Dashboard from "./pages/Dashboard";
 import BackToTop from "./components/BackToTop";
+import Jobs from "./pages/Jobs";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/jobs" element={<Jobs />} />
         </Routes>
         <BackToTop />
       </AuthProvider>

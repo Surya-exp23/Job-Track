@@ -41,6 +41,11 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            to="/jobs"
+            className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4">
+            Find jobs
+          </Link>
           {user ? (
             <>
               <Link

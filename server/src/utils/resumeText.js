@@ -1,4 +1,4 @@
-import pdf from "pdf-parse";
+import { PDFParse } from "pdf-parse";
 import mammoth from "mammoth";
 
 // Downloads the resume from Cloudinary and extracts plain text for the AI
@@ -12,8 +12,13 @@ const extractResumeText = async (resume) => {
   const buffer = Buffer.from(await response.arrayBuffer());
 
   if (resume.fileType === "PDF") {
-    const { text } = await pdf(buffer);
-    return text;
+    const parser = new PDFParse({ data: buffer });
+    try {
+      const { text } = await parser.getText();
+      return text;
+    } finally {
+      await parser.destroy?.();
+    }
   }
 
   if (resume.fileType === "DOCX") {

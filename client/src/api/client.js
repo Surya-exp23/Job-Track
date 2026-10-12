@@ -45,4 +45,4 @@ export const authApi = {
   me: (token) => request("/auth/me", { token }),
 };
 
-export { API_BASE };
+export { API_BASE, request };
