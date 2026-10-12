@@ -13,6 +13,7 @@ import MyApplications from "./pages/MyApplications";
 import SavedJobs from "./pages/SavedJobs";
 import Profile from "./pages/Profile";
 import Resumes from "./pages/Resumes";
+import Companies from "./pages/Companies";
 
 
 function App() {
@@ -64,6 +65,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Resumes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/companies"
+            element={
+              <ProtectedRoute>
+                <Companies />
               </ProtectedRoute>
             }
           />

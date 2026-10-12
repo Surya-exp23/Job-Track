@@ -63,6 +63,15 @@ const Navbar = () => {
                 </Link>
             </>
         )}
+        {user.role === "RECRUITER" && (
+            <Link
+              to="/companies"
+              className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
+            >
+              Companies
+            </Link>
+          )}
+
 
               <Link
                 to="/dashboard"
