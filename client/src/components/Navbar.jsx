@@ -57,8 +57,20 @@ const Navbar = () => {
     navigate("/");
   };
 
+
+
+const handleSamePageClick = (target) => (e) => {
+  if (location.pathname === target) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
+
+
+
   const isRecruiter = user?.role === "RECRUITER";
   const home = !user ? "/" : isRecruiter ? "/dashboard" : "/jobs";
+  const dashboardLink = "/dashboard";
   const menuLinks = isRecruiter ? recruiterLinks : candidateLinks;
   const initial = (user?.email?.[0] || "?").toUpperCase();
 
@@ -71,7 +83,7 @@ const Navbar = () => {
             : "border-white/5 bg-zinc-900/40 shadow-lg shadow-black/20 backdrop-blur-md"
         }`}
       >
-        <Link to={home} className="flex items-center gap-2.5">
+        <Link to={dashboardLink} onClick={handleSamePageClick(dashboardLink)} className="flex items-center gap-2.5">
           <img
             src={mascot}
             alt="JobTrack"

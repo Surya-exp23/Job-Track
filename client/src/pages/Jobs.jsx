@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { jobsApi } from "../api/jobs";
+import { profileApi } from "../api/profile";
+import { useAuth } from "../context/AuthContext";
+import roboHero from "../assets/robo-hero-v1.webp";
 
-
+// Must match the enums GET /api/jobs validates on the backend
 const REMOTE_TYPES = ["Remote", "On-site", "Hybrid"];
 const EMPLOYMENT_TYPES = ["Full-time", "Part-time", "Contract", "Internship"];
 const EXPERIENCE_LEVELS = ["Entry-level", "Junior", "Mid-level", "Senior-level", "Lead"];
@@ -38,10 +41,10 @@ const timeAgo = (value) => {
 };
 
 const inputClass =
-  "h-12 rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition focus:border-lime-400";
+  "h-11 rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition focus:border-lime-400";
 
 const selectClass =
-  "h-12 rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 outline-none transition focus:border-lime-400";
+  "h-11 rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 outline-none transition focus:border-lime-400";
 
 const JobCard = ({ job }) => {
   const company = job.companyId || {};
@@ -96,6 +99,7 @@ const JobCard = ({ job }) => {
 };
 
 const Jobs = () => {
+  const { user, authFetch } = useAuth();
   const [query, setQuery] = useState(emptyFilters);
   const [applied, setApplied] = useState(emptyFilters);
   const [page, setPage] = useState(1);
@@ -103,6 +107,18 @@ const Jobs = () => {
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [firstName, setFirstName] = useState("");
+
+  const isCandidate = user?.role === "CANDIDATE";
+
+  // Greet the candidate by name in the hero
+  useEffect(() => {
+    if (!isCandidate) return;
+    profileApi
+      .getMyProfile(authFetch)
+      .then((body) => setFirstName(body?.data?.profile?.firstName || ""))
+      .catch(() => {});
+  }, [isCandidate, authFetch]);
 
   const fetchJobs = useCallback(async (filters, pageNum) => {
     setLoading(true);
@@ -132,7 +148,7 @@ const Jobs = () => {
     setApplied({ ...query });
   };
 
-
+  // Dropdowns apply instantly; text inputs apply on Search
   const handleSelect = (key, value) => {
     const next = { ...query, [key]: value };
     setQuery(next);
@@ -159,10 +175,44 @@ const Jobs = () => {
   return (
     <div className="min-h-screen bg-zinc-950 px-4 pb-16 pt-28 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">Find your next role</h1>
-        <p className="mt-2 text-sm text-zinc-400">
-          {pagination ? `${pagination.total} open role${pagination.total === 1 ? "" : "s"}` : "Browse open roles"}
-        </p>
+        {isCandidate ? (
+          <section className="grid items-center gap-10 py-6 lg:grid-cols-2 lg:py-10">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-lime-400">
+                Welcome back{firstName ? `, ${firstName}` : ""}
+              </p>
+              <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                Your dream role is
+                <br />
+                <span className="text-lime-300">one application</span> away.
+              </h1>
+              <p className="mt-4 max-w-md text-zinc-400">
+                Search open roles below, track every application, and let AI sharpen your resume.
+              </p>
+              <p className="mt-4 text-sm text-zinc-500">
+                {pagination
+                  ? `${pagination.total} open role${pagination.total === 1 ? "" : "s"} right now`
+                  : "Finding open roles…"}
+              </p>
+            </div>
+            <div className="relative mx-auto w-full max-w-56 sm:max-w-64">
+              <div className="absolute inset-6 rounded-full bg-lime-400/15 blur-3xl" />
+              <img
+                    src={roboHero}
+                    alt="JobTrack robo taking off"
+                    className="w-full"
+                    loading="lazy"
+                />
+            </div>
+          </section>
+        ) : (
+          <>
+            <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">Find your next role</h1>
+            <p className="mt-2 text-sm text-zinc-400">
+              {pagination ? `${pagination.total} open role${pagination.total === 1 ? "" : "s"}` : "Browse open roles"}
+            </p>
+          </>
+        )}
 
         <form
           onSubmit={handleSearch}
@@ -183,7 +233,7 @@ const Jobs = () => {
             />
             <button
               type="submit"
-              className="beam-hover h-12 rounded-xl bg-lime-400 px-8 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.25)]"
+              className="beam-hover h-10 rounded-xl bg-lime-400 px-8 text-sm font-bold text-zinc-950 cursor-pointer"
             >
               Search
             </button>
