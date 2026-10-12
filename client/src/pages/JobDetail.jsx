@@ -307,7 +307,11 @@ const JobDetail = () => {
                     (applied ? (
                       <div className="mt-6 rounded-xl border border-lime-400/30 bg-lime-400/10 p-4 text-center">
                         <p className="text-sm font-bold text-lime-300">Application submitted</p>
-                        <p className="mt-1 text-xs text-zinc-400">Track it in My Applications.</p>
+                        <p className="mt-1 text-xs text-zinc-400">
+                            <Link to="/applications" className="text-lime-300 underline-offset-2 hover:underline">
+                            Track it in My Applications
+                            </Link>
+                        </p>
                       </div>
                     ) : (
                       <button

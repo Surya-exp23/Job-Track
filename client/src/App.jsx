@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import BackToTop from "./components/BackToTop";
 import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
+import MyApplications from "./pages/MyApplications";
 
 
 function App() {
@@ -31,6 +32,15 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:id" element={<JobDetail />} />
+          <Route
+            path="/applications"
+            element={
+              <ProtectedRoute>
+                <MyApplications />
+              </ProtectedRoute>
+            }
+          />
+
         </Routes>
         <BackToTop />
       </AuthProvider>
