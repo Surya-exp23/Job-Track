@@ -5,6 +5,7 @@ import RotatingText from "../components/RotatingText";
 import CompanyMarquee from "../components/CompanyMarquee";
 import mascot from "../assets/mascot.webp";
 import ArsenalBento from "../components/ArsenalBento";
+import GuestChatbot from "../components/GuestChatbot";
 
 const pipeline = [
   {
@@ -261,6 +262,7 @@ const Landing = () => {
           </p>
         </div>
       </footer>
+      <GuestChatbot />
     </div>
   );
 };
