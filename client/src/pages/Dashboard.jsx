@@ -193,7 +193,7 @@ const Dashboard = () => {
         ]);
         const jobs = jobsBody.data.jobs || [];
         const companies = (companiesBody.data.companies || []).filter(
-          (c) => String(c.createdBy) === String(user?.id)
+          (c) => String(c.createdBy) === String(user?._id)
         );
 
         // Applicants still in an active (non-terminal) stage across recent jobs

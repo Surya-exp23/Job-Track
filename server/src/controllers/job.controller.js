@@ -10,6 +10,43 @@ const EXPERIENCE_LEVELS = ["Entry-level", "Junior", "Mid-level", "Senior-level",
 const JOB_STATUSES = ["Open", "Closed", "Paused","Expired"];
 const SALARY_PERIODS = ["Hourly", "Weekly", "Monthly", "Yearly"];
 
+// The API speaks human-readable values, the model stores uppercase enums.
+// These maps translate at the controller boundary.
+const REMOTE_TYPE_MAP = { "Remote": "REMOTE", "On-site": "ONSITE", "Hybrid": "HYBRID" };
+const EMPLOYMENT_TYPE_MAP = { "Full-time": "FULL_TIME", "Part-time": "PART_TIME", "Contract": "CONTRACT", "Internship": "INTERNSHIP" };
+const EXPERIENCE_LEVEL_MAP = { "Entry-level": "ENTRY", "Junior": "JUNIOR", "Mid-level": "MID", "Senior-level": "SENIOR", "Lead": "LEAD" };
+const JOB_STATUS_MAP = { "Open": "ACTIVE", "Closed": "CLOSED", "Paused": "PAUSED", "Expired": "EXPIRED" };
+const SALARY_PERIOD_MAP = { "Hourly": "HOURLY", "Weekly": "WEEKLY", "Monthly": "MONTHLY", "Yearly": "YEARLY" };
+
+const invertMap = (map) => Object.fromEntries(Object.entries(map).map(([k, v]) => [v, k]));
+const REMOTE_TYPE_LABELS = invertMap(REMOTE_TYPE_MAP);
+const EMPLOYMENT_TYPE_LABELS = invertMap(EMPLOYMENT_TYPE_MAP);
+const EXPERIENCE_LEVEL_LABELS = invertMap(EXPERIENCE_LEVEL_MAP);
+const JOB_STATUS_LABELS = invertMap(JOB_STATUS_MAP);
+const SALARY_PERIOD_LABELS = invertMap(SALARY_PERIOD_MAP);
+
+// Human-readable -> model enums (writes, query filters). Unknown values pass through.
+const toModelEnums = (input = {}) => {
+  const out = { ...input };
+  if (out.remoteType) out.remoteType = REMOTE_TYPE_MAP[out.remoteType] || out.remoteType;
+  if (out.employmentType) out.employmentType = EMPLOYMENT_TYPE_MAP[out.employmentType] || out.employmentType;
+  if (out.experienceLevel) out.experienceLevel = EXPERIENCE_LEVEL_MAP[out.experienceLevel] || out.experienceLevel;
+  if (out.status) out.status = JOB_STATUS_MAP[out.status] || out.status;
+  if (out.salary?.period) out.salary = { ...out.salary, period: SALARY_PERIOD_MAP[out.salary.period] || out.salary.period };
+  return out;
+};
+
+// Model enums -> human-readable (responses)
+const toPublicJob = (job) => {
+  const o = typeof job.toObject === "function" ? job.toObject() : { ...job };
+  if (o.remoteType) o.remoteType = REMOTE_TYPE_LABELS[o.remoteType] || o.remoteType;
+  if (o.employmentType) o.employmentType = EMPLOYMENT_TYPE_LABELS[o.employmentType] || o.employmentType;
+  if (o.experienceLevel) o.experienceLevel = EXPERIENCE_LEVEL_LABELS[o.experienceLevel] || o.experienceLevel;
+  if (o.status) o.status = JOB_STATUS_LABELS[o.status] || o.status;
+  if (o.salary?.period) o.salary = { ...o.salary, period: SALARY_PERIOD_LABELS[o.salary.period] || o.salary.period };
+  return o;
+};
+
 
 const UPDATABLE_FIELDS = [
     "title",
@@ -25,14 +62,13 @@ const UPDATABLE_FIELDS = [
     "expiresAt",
 ];
 
-const COMPANY_PUBLLIC_FIELDS = "name logoUrl location industry";
+const COMPANY_PUBLIC_FIELDS = "name logoUrl location industry";
 
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const normalizeSkills = (skills) => {
-    if(!Array.isArray(skills)){
-        return [...new Set(skills.map((s)=> s.trim().toLowerCase()).filter(Boolean))];
-    }
+    if (!Array.isArray(skills)) return [];
+    return [...new Set(skills.map((s) => s.trim().toLowerCase()).filter(Boolean))];
 };
 
 
@@ -145,7 +181,7 @@ const createJob = async (req, res, next) => {
       });
     }
 
-    const job = await Job.create({
+    const job = await Job.create(toModelEnums({
       title: title.trim(),
       description: description.trim(),
       companyId,
@@ -167,14 +203,14 @@ const createJob = async (req, res, next) => {
       source: { type: "RECRUITER" },
       status,
       expiresAt: parsedExpiresAt,
-    });
+    }));
 
     await job.populate("companyId", COMPANY_PUBLIC_FIELDS);
 
     return res.status(201).json({
       success: true,
       message: "Job posted successfully",
-      data: { job },
+      data: { job: toPublicJob(job) },
     });
   } catch (error) {
     next(error);
@@ -213,7 +249,7 @@ const getJobs = async (req, res, next) => {
           message: `remoteType must be one of: ${REMOTE_TYPES.join(", ")}`,
         });
       }
-      and.push({ remoteType: req.query.remoteType });
+      and.push({ remoteType: REMOTE_TYPE_MAP[req.query.remoteType] });
     }
 
     if (req.query.employmentType) {
@@ -223,7 +259,7 @@ const getJobs = async (req, res, next) => {
           message: `employmentType must be one of: ${EMPLOYMENT_TYPES.join(", ")}`,
         });
       }
-      and.push({ employmentType: req.query.employmentType });
+      and.push({ employmentType: EMPLOYMENT_TYPE_MAP[req.query.employmentType] });
     }
 
     if (req.query.experienceLevel) {
@@ -233,7 +269,7 @@ const getJobs = async (req, res, next) => {
           message: `experienceLevel must be one of: ${EXPERIENCE_LEVELS.join(", ")}`,
         });
       }
-      and.push({ experienceLevel: req.query.experienceLevel });
+      and.push({ experienceLevel: EXPERIENCE_LEVEL_MAP[req.query.experienceLevel] });
     }
 
     if (req.query.skills?.trim()) {
@@ -279,7 +315,7 @@ const getJobs = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       data: {
-        jobs,
+        jobs: jobs.map(toPublicJob),
         pagination: {
           page,
           limit,
@@ -311,7 +347,7 @@ const getMyJobs = async (req, res, next) => {
           message: `status must be one of: ${JOB_STATUSES.join(", ")}`,
         });
       }
-      filter.status = req.query.status;
+      filter.status = JOB_STATUS_MAP[req.query.status];
     }
 
     const [jobs, total] = await Promise.all([
@@ -326,7 +362,7 @@ const getMyJobs = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       data: {
-        jobs,
+        jobs: jobs.map(toPublicJob),
         pagination: {
           page,
           limit,
@@ -366,7 +402,7 @@ const getMyJob = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: { job },
+      data: { job: toPublicJob(job) },
     });
   } catch (error) {
     next(error);
@@ -405,7 +441,6 @@ const getJob = async (req, res, next) => {
     next(error);
   }
 };
-
 const updateJob = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -498,11 +533,12 @@ const updateJob = async (req, res, next) => {
     }
 
     if (updates.salary !== undefined) {
-      const merged = { ...(job.salary?.toObject() || {}), ...updates.salary };
-      const salaryError = validateSalary(merged);
+      const salaryError = validateSalary(updates.salary);
       if (salaryError) {
         return res.status(400).json({ success: false, message: salaryError });
       }
+      const merged = { ...(job.salary?.toObject() || {}), ...updates.salary };
+      if (merged.period) merged.period = SALARY_PERIOD_MAP[merged.period] || merged.period;
       updates.salary = merged;
     }
 
@@ -521,23 +557,26 @@ const updateJob = async (req, res, next) => {
       }
     }
 
+    // Translate API values to the model's enums before saving
+    const mappedUpdates = toModelEnums(updates);
+
     // Publishing a draft stamps it with today's date
-    if (updates.status === "ACTIVE" && job.status === "DRAFT") {
-      updates.postedAt = new Date();
+    if (mappedUpdates.status === "ACTIVE" && job.status === "DRAFT") {
+      mappedUpdates.postedAt = new Date();
     }
 
     for (const field of ["title", "description", "location"]) {
-      if (typeof updates[field] === "string") updates[field] = updates[field].trim();
+      if (typeof mappedUpdates[field] === "string") mappedUpdates[field] = mappedUpdates[field].trim();
     }
 
-    Object.assign(job, updates);
+    Object.assign(job, mappedUpdates);
     await job.save();
     await job.populate("companyId", COMPANY_PUBLIC_FIELDS);
 
     return res.status(200).json({
       success: true,
       message: "Job updated successfully",
-      data: { job },
+      data: { job: toPublicJob(job) },
     });
   } catch (error) {
     next(error);
@@ -576,9 +615,6 @@ const deleteJob = async (req, res, next) => {
       });
     }
     await SavedJob.deleteMany({ jobId: job._id });
-
-    await job.deleteOne();
-
 
     await job.deleteOne();
 

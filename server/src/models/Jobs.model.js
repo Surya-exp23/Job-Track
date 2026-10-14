@@ -72,7 +72,7 @@ const jobSchema = new Schema(
       },
       period: {
         type: String,
-        enum: ["YEARLY", "MONTHLY", "HOURLY"],
+        enum: ["YEARLY", "MONTHLY", "WEEKLY", "HOURLY"],
         default: "YEARLY",
       },
     },
@@ -102,7 +102,7 @@ const jobSchema = new Schema(
 
     status: {
       type: String,
-      enum: ["DRAFT", "ACTIVE", "CLOSED", "EXPIRED"],
+      enum: ["DRAFT", "ACTIVE", "PAUSED", "CLOSED", "EXPIRED"],
       default: "ACTIVE",
     },
 

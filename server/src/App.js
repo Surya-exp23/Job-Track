@@ -9,40 +9,33 @@ import savedJobRoutes from "./routes/savedJob.routes.js";
 import profileRoutes from "./routes/profile.routes.js";
 import resumeAnalysisRoutes from "./routes/resumeAnalysis.routes.js";
 import resumeRoutes from "./routes/resume.routes.js";
-import {requestLogger} from "./middlewares/requestLogger.js";
+import { requestLogger } from "./middlewares/requestLogger.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
-
-const app= express()
-
+const app = express();
 
 app.use(
-    cors({
-        origin: process.env.CORS_ORIGIN,
-        credentials: true
-    })
-)
+  cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true
+  })
+);
 
 app.use(requestLogger);
-//common middlewares
-app.use(express.json({limit: "16kb"}));
-app.use(express.urlencoded({extended: true,limit: "16kb"}))
-app.use(express.static("public"))
-app.use(errorHandler);  
-
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(express.static("public"));
 app.use(cookieParser());
+
 app.use("/api/auth", authRoutes);
 app.use("/api/companies", companyRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
-
 app.use("/api/saved-jobs", savedJobRoutes);
 app.use("/api/profile", profileRoutes);
-
 app.use("/api/resume-analysis", resumeAnalysisRoutes);
 app.use("/api/resumes", resumeRoutes);
 
+app.use(errorHandler);
 
-
-
-
-export {app}
+export { app };

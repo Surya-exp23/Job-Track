@@ -58,7 +58,7 @@ const JobForm = () => {
       ]);
 
       const mine = (companiesBody.data.companies || []).filter(
-        (c) => String(c.createdBy) === String(user?.id)
+        (c) => String(c.createdBy) === String(user?._id)
       );
       setCompanies(mine);
 

@@ -188,7 +188,7 @@ const Companies = () => {
     try {
       const body = await companiesApi.listCompanies({ limit: 100 });
       const mine = (body.data.companies || []).filter(
-        (c) => String(c.createdBy) === String(user?.id)
+        (c) => String(c.createdBy) === String(user?._id)
       );
       setCompanies(mine);
     } catch (err) {

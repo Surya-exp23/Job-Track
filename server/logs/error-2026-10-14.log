@@ -1,0 +1,150 @@
+[2026-10-14 23:28:45] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:28:45] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 111ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:28:45] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:28:45] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 102ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:28:45] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:28:45] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 101ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:29:22] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:272:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Real projects\JobTrack\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at D:\Real projects\JobTrack\server\node_modules\router\index.js:295:15
+    at processParams (D:\Real projects\JobTrack\server\node_modules\router\index.js:582:12)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\index.js:291:5)
+    at router.handle (D:\Real projects\JobTrack\server\node_modules\router\index.js:186:3) {"path":"/api/jobs?page=1&limit=9","method":"GET","statusCode":500}
+[2026-10-14 23:29:22] [31merror[39m: GET /api/jobs?page=1&limit=9 500 - 2ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:29:22] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:272:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Real projects\JobTrack\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at D:\Real projects\JobTrack\server\node_modules\router\index.js:295:15
+    at processParams (D:\Real projects\JobTrack\server\node_modules\router\index.js:582:12)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\index.js:291:5)
+    at router.handle (D:\Real projects\JobTrack\server\node_modules\router\index.js:186:3) {"path":"/api/jobs?page=1&limit=9","method":"GET","statusCode":500}
+[2026-10-14 23:29:22] [31merror[39m: GET /api/jobs?page=1&limit=9 500 - 2ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:29:37] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:29:37] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 103ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:29:37] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:29:37] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 107ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:30:03] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:30:03] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 104ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:30:04] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:30:04] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 95ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:30:04] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:30:04] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 91ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:30:29] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:30:29] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 196ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:30:29] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:30:29] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 84ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:30:30] [31merror[39m: COMPANY_PUBLIC_FIELDS is not defined
+ReferenceError: COMPANY_PUBLIC_FIELDS is not defined
+    at getMyJobs (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:319:32)
+    at Layer.handleRequest (D:\Real projects\JobTrack\server\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Real projects\JobTrack\server\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Real%20projects/JobTrack/server/src/middlewares/auth.middleware.js:36:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"path":"/api/jobs/mine?limit=5","method":"GET","statusCode":500}
+[2026-10-14 23:30:30] [31merror[39m: GET /api/jobs/mine?limit=5 500 - 89ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:45:30] [31merror[39m: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+ValidationError: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+    at model.validate (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\document.js:2945:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:676:7)
+    at async model.create (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:2807:5)
+    at async createJob (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:148:17) {"path":"/api/jobs","method":"POST","body":{"title":"UX UI developer","description":"Kaam krna pdega 12hrs","companyId":"6acfc462564e42906ae72154","employmentType":"Full-time","location":"Jodhpur","remoteType":"Remote","experienceLevel":"Entry-level","skills":["react","nodejs","monodb","figma"],"salary":{"min":70000,"max":120000,"period":"Yearly"},"status":"Open","expiresAt":"2026-11-27"},"statusCode":500}
+[2026-10-14 23:45:30] [31merror[39m: POST /api/jobs 500 - 445ms {"ip":"::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+[2026-10-14 23:45:43] [31merror[39m: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+ValidationError: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+    at model.validate (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\document.js:2945:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:676:7)
+    at async model.create (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:2807:5)
+    at async createJob (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:148:17) {"path":"/api/jobs","method":"POST","body":{"title":"UX UI developer","description":"Kaam krna pdega 12hrs","companyId":"6acfc462564e42906ae72154","employmentType":"Full-time","location":"Jodhpur","remoteType":"Remote","experienceLevel":"Entry-level","skills":["react","nodejs","monodb","figma"],"salary":{"min":70000,"max":120000,"period":"Yearly"},"status":"Open","expiresAt":"2026-11-27"},"statusCode":500}
+[2026-10-14 23:45:43] [31merror[39m: POST /api/jobs 500 - 528ms {"ip":"::1","userAgent":"Mozilla/5.0 (Linux; Android 16; Pixel 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36"}
+[2026-10-14 23:46:00] [31merror[39m: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+ValidationError: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+    at model.validate (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\document.js:2945:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:676:7)
+    at async model.create (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:2807:5)
+    at async createJob (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:148:17) {"path":"/api/jobs","method":"POST","body":{"title":"UX UI developer","description":"Kaam krna pdega 12hrs","companyId":"6acfc462564e42906ae72154","employmentType":"Full-time","location":"Jodhpur","remoteType":"Remote","experienceLevel":"Entry-level","skills":["react","nodejs","monodb","figma"],"salary":{"min":70000,"max":120000,"period":"Yearly"},"status":"Open","expiresAt":"2026-11-27"},"statusCode":500}
+[2026-10-14 23:46:00] [31merror[39m: POST /api/jobs 500 - 186ms {"ip":"::1","userAgent":"Mozilla/5.0 (Linux; Android 16; Pixel 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36"}
+[2026-10-14 23:46:09] [31merror[39m: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+ValidationError: Job validation failed: salary.period: `Yearly` is not a valid enum value for path `salary.period`., remoteType: `Remote` is not a valid enum value for path `remoteType`., employmentType: `Full-time` is not a valid enum value for path `employmentType`., experienceLevel: `Entry-level` is not a valid enum value for path `experienceLevel`., status: `Open` is not a valid enum value for path `status`.
+    at model.validate (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\document.js:2945:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async model.$__save (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:399:7)
+    at async maybeTracedSave (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:676:7)
+    at async model.create (D:\Real projects\JobTrack\server\node_modules\mongoose\lib\model.js:2807:5)
+    at async createJob (file:///D:/Real%20projects/JobTrack/server/src/controllers/job.controller.js:148:17) {"path":"/api/jobs","method":"POST","body":{"title":"UX UI developer","description":"Kaam krna pdega 12hrs","companyId":"6acfc462564e42906ae72154","employmentType":"Full-time","location":"Jodhpur","remoteType":"Remote","experienceLevel":"Entry-level","skills":["react","nodejs","monodb","figma"],"salary":{"min":70000,"max":120000,"period":"Yearly"},"status":"Open","expiresAt":"2026-11-27"},"statusCode":500}
+[2026-10-14 23:46:09] [31merror[39m: POST /api/jobs 500 - 736ms {"ip":"::1","userAgent":"Mozilla/5.0 (Linux; Android 16; Pixel 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36"}

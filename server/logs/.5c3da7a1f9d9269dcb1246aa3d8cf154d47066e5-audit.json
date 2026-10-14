@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Real projects\\JobTrack\\server\\logs\\.5c3da7a1f9d9269dcb1246aa3d8cf154d47066e5-audit.json",
+    "files": [
+        {
+            "date": 1792000658871,
+            "name": "D:\\Real projects\\JobTrack\\server\\logs\\combined-2026-10-14.log",
+            "hash": "1244d918594267efcbc06965fb09c4f89cc4f0bddf7373948279788da42f7af0"
+        },
+        {
+            "date": 1792007939234,
+            "name": "D:\\Real projects\\JobTrack\\server\\logs\\combined-2026-10-15.log",
+            "hash": "f2208e473315d6bc94e7ec5ddc48fa2f7ec68b3cf17a5a3e015cdb20135d446f"
+        }
+    ],
+    "hashType": "sha256"
+}
