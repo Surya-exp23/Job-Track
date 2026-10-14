@@ -194,7 +194,7 @@ const EmptyState = ({ title, message, actionLabel, onAction }) => (
     <img
       src={roboSad}
       alt="No jobs found"
-      className="w-24 shrink-0 sm:w-56"
+      className="w-24 shrink-0 mix-blend-multiply sm:w-56"
       loading="lazy"
     />
   </div>
@@ -298,14 +298,15 @@ const Jobs = () => {
               </p>
             </div>
             <div className="relative mx-auto w-full max-w-56 sm:max-w-64">
-              <div className="absolute inset-6 rounded-full bg-blue-50 blur-3xl" />
+              <div className="absolute -inset-8 bg-[radial-gradient(closest-side,rgba(37,99,235,0.22),transparent)] blur-2xl" />
               <img
                 src={roboHero}
                 alt="JobTrack robo taking off"
-                className="w-full"
+                className="relative w-full mix-blend-multiply"
                 loading="lazy"
               />
             </div>
+
           </section>
         ) : (
           <>

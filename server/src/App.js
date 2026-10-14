@@ -11,6 +11,7 @@ import resumeAnalysisRoutes from "./routes/resumeAnalysis.routes.js";
 import resumeRoutes from "./routes/resume.routes.js";
 import { requestLogger } from "./middlewares/requestLogger.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
+import notificationRoutes from "./routes/notification.routes.js";
 
 const app = express();
 
@@ -35,6 +36,8 @@ app.use("/api/saved-jobs", savedJobRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/resume-analysis", resumeAnalysisRoutes);
 app.use("/api/resumes", resumeRoutes);
+app.use("/api/notifications", notificationRoutes);
+
 
 app.use(errorHandler);
 

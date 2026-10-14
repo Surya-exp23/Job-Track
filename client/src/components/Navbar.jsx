@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import mascot from "../assets/mascot.webp";
+import NotificationBell from "./NotificationBell";
 
 const candidateLinks = [
   { to: "/profile", label: "My Profile" },
@@ -119,6 +120,7 @@ const handleSamePageClick = (target) => (e) => {
               >
                 Dashboard
               </Link>
+              <NotificationBell/>
               <div className="relative" ref={menuRef}>
                 <button
                   onClick={() => setOpen((o) => !o)}

@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import { Application } from "../models/application.model.js";
 import { Job } from "../models/Jobs.model.js";
 import { Resume } from "../models/resume.model.js";
+import { notifyUser } from "../utils/notify.js";
+import { Profile } from "../models/profile.model.js";
 
 const ALL_STATUSES = [
   "APPLIED",
@@ -24,6 +26,24 @@ const RECRUITER_STATUSES = [
 
 
 const TERMINAL_STATUSES = ["SELECTED", "REJECTED", "WITHDRAWN"];
+
+const STATUS_COPY = {
+  SCREENING: ["Application under review", "is now being reviewed"],
+  SHORTLISTED: ["You've been shortlisted", "made the shortlist"],
+  INTERVIEW: ["Interview stage", "moved to the interview stage"],
+  SELECTED: ["You've been selected", "was selected"],
+  REJECTED: ["Application update", "was not moved forward this time"],
+};
+
+const STATUS_ICONS = {
+  SCREENING: "viewed",
+  SHORTLISTED: "shortlisted",
+  INTERVIEW: "interview",
+  SELECTED: "shortlisted",
+  REJECTED: "rejected",
+};
+
+
 
 const applyJob = async (req, res, next) => {
   try {
@@ -71,6 +91,10 @@ const applyJob = async (req, res, next) => {
       jobId,
     });
 
+    const profile = await Profile.findOne({ userId: req.user.id }).select("firstName lastName");
+    const candidateName = [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || "A candidate";
+
+
     if (existing) {
       // Withdrawing is reversible: a withdrawn application can be sent again
       if (existing.status === "WITHDRAWN") {
@@ -80,6 +104,15 @@ const applyJob = async (req, res, next) => {
         existing.appliedAt = new Date();
         existing.timeline.push({ status: "APPLIED", changedAt: new Date() });
         await existing.save();
+        await notifyUser(job.createdBy, {
+          type: "NEW_APPLICATION",
+          icon: "applicant",
+          title: "New applicant",
+          message: `${candidateName} applied for ${job.title}.`,
+          link: `/jobs/${job._id}/applicants`,
+          relatedId: existing._id,
+        });
+
 
         return res.status(200).json({
           success: true,
@@ -101,6 +134,16 @@ const applyJob = async (req, res, next) => {
       notes: notes?.trim() || undefined,
       timeline: [{ status: "APPLIED" }],
     });
+
+    await notifyUser(job.createdBy, {
+      type: "NEW_APPLICATION",
+      icon: "applicant",
+      title: "New applicant",
+      message: `${candidateName} applied for ${job.title}.`,
+      link: `/jobs/${job._id}/applicants`,
+      relatedId: application._id,
+    });
+
 
     return res.status(201).json({
       success: true,
@@ -310,7 +353,7 @@ const updateApplicationStatus = async (req, res, next) => {
 
     const application = await Application.findById(id).populate({
       path: "jobId",
-      select: "createdBy",
+      select: "title createdBy",
     });
 
     if (!application || !application.jobId) {
@@ -343,6 +386,18 @@ const updateApplicationStatus = async (req, res, next) => {
       changedAt: new Date(),
     });
     await application.save();
+
+    const [notifTitle, notifPhrase] = STATUS_COPY[status] || ["Application update", "was updated"];
+
+    await notifyUser(application.candidateId, {
+      type: "APPLICATION_STATUS",
+      icon: STATUS_ICONS[status] || "info",
+      title: notifTitle,
+      message: `Your application for ${application.jobId.title} ${notifPhrase}.`,
+      link: "/applications",
+      relatedId: application._id,
+    });
+
 
     return res.status(200).json({
       success: true,
