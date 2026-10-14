@@ -263,9 +263,18 @@ const Dashboard = () => {
               <div key={i} className="h-24 animate-pulse rounded-2xl border border-slate-200 bg-white" />
             ))}
           </div>
-        ) : (
+        ) : data ? (
           <div className="mt-8">
             {isRecruiter ? <RecruiterDashboard data={data} /> : <CandidateDashboard data={data} />}
+          </div>
+        ) : (
+          <div className="mt-8 rounded-2xl border border-red-200 bg-red-50 p-6">
+            <p className="text-sm font-semibold text-red-700">
+              Couldn't load dashboard data
+            </p>
+            <p className="mt-1 text-sm text-red-600">
+              Something went wrong on the server. Refresh the page to try again.
+            </p>
           </div>
         )}
       </main>

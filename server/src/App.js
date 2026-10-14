@@ -9,6 +9,7 @@ import savedJobRoutes from "./routes/savedJob.routes.js";
 import profileRoutes from "./routes/profile.routes.js";
 import resumeAnalysisRoutes from "./routes/resumeAnalysis.routes.js";
 import resumeRoutes from "./routes/resume.routes.js";
+import {requestLogger} from "./middlewares/requestLogger.js";
 
 
 const app= express()
@@ -21,10 +22,12 @@ app.use(
     })
 )
 
+app.use(requestLogger);
 //common middlewares
 app.use(express.json({limit: "16kb"}));
 app.use(express.urlencoded({extended: true,limit: "16kb"}))
 app.use(express.static("public"))
+app.use(errorHandler);  
 
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);

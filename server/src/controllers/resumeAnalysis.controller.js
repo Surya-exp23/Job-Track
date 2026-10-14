@@ -37,6 +37,9 @@ const createAnalysis = async (req, res, next) => {
     resume.parsingError = undefined;
     await resume.save();
 
+    console.log("Resume file URL:", resume.fileUrl);
+
+
     const resumeText = await extractResumeText(resume);
 
     if (!resumeText.trim()) {

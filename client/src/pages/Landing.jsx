@@ -4,6 +4,7 @@ import { MascotVideo, MascotWave } from "../components/Mascot";
 import RotatingText from "../components/RotatingText";
 import CompanyMarquee from "../components/CompanyMarquee";
 import mascot from "../assets/mascot.webp";
+import ArsenalBento from "../components/ArsenalBento";
 
 const pipeline = [
   {
@@ -196,30 +197,7 @@ const Landing = () => {
       {/* Features */}
       <section className="border-t border-slate-200 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
-            Arsenal
-          </p>
-          <h2 className="mx-auto mt-4 max-w-2xl text-center font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Everything your hunt needs. Nothing it doesn't.
-          </h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                className="group rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-blue-300 hover:bg-white"
-              >
-                <div className="font-display text-sm font-bold text-slate-500 transition group-hover:text-blue-600">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <h3 className="mt-3 font-display text-lg font-bold text-slate-900">
-                  {f.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                  {f.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <ArsenalBento />
         </div>
       </section>
 
@@ -260,7 +238,7 @@ const Landing = () => {
           </p>
           <Link
             to="/register"
-            className="relative mt-8 inline-block rounded-xl bg-blue-600 px-10 py-4 text-base font-bold text-white  transition hover:bg-blue-500"
+            className="beam-hover relative mt-8 inline-block rounded-xl bg-blue-600 px-10 py-4 text-base font-bold text-white  transition hover:bg-blue-500"
           >
             Create your free account
           </Link>

@@ -165,3 +165,28 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .beam-hover:hover::before { animation: none; }
 }
+
+
+
+/* Arsenal bento animations */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.55; }
+}
+@keyframes slide-arrow {
+  0% { transform: translateX(-6px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateX(6px); opacity: 0; }
+}
+.animate-floaty { animation: floaty 4.5s ease-in-out infinite; }
+.animate-pulse-dot { animation: pulse-dot 2.2s ease-in-out infinite; }
+.animate-flow-arrow { animation: slide-arrow 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-floaty,
+  .animate-pulse-dot,
+  .animate-flow-arrow { animation: none; }
+}
