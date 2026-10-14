@@ -20,13 +20,13 @@ const RECRUITER_STATUSES = ["SCREENING", "SHORTLISTED", "INTERVIEW", "SELECTED",
 const TERMINAL = ["SELECTED", "REJECTED", "WITHDRAWN"];
 
 const STATUS_STYLES = {
-  APPLIED: "bg-zinc-700/40 text-zinc-300",
-  SCREENING: "bg-amber-400/15 text-amber-300",
-  SHORTLISTED: "bg-sky-400/15 text-sky-300",
-  INTERVIEW: "bg-violet-400/15 text-violet-300",
-  SELECTED: "bg-lime-400/15 text-lime-300",
-  REJECTED: "bg-red-400/15 text-red-300",
-  WITHDRAWN: "bg-zinc-800 text-zinc-500",
+  APPLIED: "bg-slate-200 text-slate-600",
+  SCREENING: "bg-amber-100 text-amber-700",
+  SHORTLISTED: "bg-sky-100 text-sky-700",
+  INTERVIEW: "bg-violet-100 text-violet-700",
+  SELECTED: "bg-blue-50 text-blue-600",
+  REJECTED: "bg-red-100 text-red-600",
+  WITHDRAWN: "bg-slate-100 text-slate-400",
 };
 
 const PAGE_SIZE = 10;
@@ -54,13 +54,13 @@ const ApplicantCard = ({ application, onMoveStatus, moving }) => {
   };
 
   return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="truncate font-display text-base font-bold text-white">
+          <p className="truncate font-display text-base font-bold text-slate-900">
             {candidate.email || "Candidate"}
           </p>
-          <p className="mt-0.5 text-xs text-zinc-500">
+          <p className="mt-0.5 text-xs text-slate-400">
             Applied {formatDate(application.appliedAt || application.createdAt)}
           </p>
         </div>
@@ -76,7 +76,7 @@ const ApplicantCard = ({ application, onMoveStatus, moving }) => {
           href={resume.fileUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-3 inline-block rounded-xl border border-zinc-700 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+          className="mt-3 inline-block rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
         >
           View resume: {resume.fileName}
         </a>
@@ -88,7 +88,7 @@ const ApplicantCard = ({ application, onMoveStatus, moving }) => {
             value={status}
             onChange={(e) => handleChange(e.target.value)}
             disabled={moving}
-            className="h-10 rounded-xl border border-zinc-800 bg-zinc-950 px-3 text-sm text-zinc-200 outline-none transition focus:border-lime-400 disabled:opacity-50"
+            className="h-10 rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm text-slate-700 outline-none transition focus:border-blue-600 disabled:opacity-50"
           >
             {RECRUITER_STATUSES.map((s) => (
               <option key={s} value={s}>
@@ -101,17 +101,17 @@ const ApplicantCard = ({ application, onMoveStatus, moving }) => {
             onChange={(e) => setNote(e.target.value)}
             placeholder="Note for the timeline (optional)"
             disabled={moving}
-            className="h-10 flex-1 rounded-xl border border-zinc-800 bg-zinc-950 px-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-lime-400 disabled:opacity-50"
+            className="h-10 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-blue-600 disabled:opacity-50"
           />
         </div>
       ) : (
-        <p className="mt-3 text-xs text-zinc-600">
+        <p className="mt-3 text-xs text-slate-500">
           {application.status === "WITHDRAWN"
             ? "The candidate withdrew this application."
             : "This application is closed."}
         </p>
       )}
-      {moving && <p className="mt-2 text-xs text-zinc-500">Updating…</p>}
+      {moving && <p className="mt-2 text-xs text-slate-400">Updating…</p>}
     </div>
   );
 };
@@ -186,20 +186,20 @@ const Applicants = () => {
   const totalPages = pagination?.totalPages || 0;
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-4 pb-16 pt-28 sm:px-6">
+    <div className="min-h-screen bg-slate-50 px-4 pb-16 pt-28 sm:px-6">
       <div className="mx-auto max-w-4xl">
-        <Link to="/my-jobs" className="text-sm text-zinc-400 transition hover:text-white">
+        <Link to="/my-jobs" className="text-sm text-slate-500 transition hover:text-slate-900">
           ← My jobs
         </Link>
-        <h1 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+        <h1 className="mt-4 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
           {job ? `Applicants — ${job.title}` : "Applicants"}
         </h1>
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm text-slate-500">
           {pagination ? `${pagination.total} applicant${pagination.total === 1 ? "" : "s"}` : "Review applications"}
         </p>
 
         {error && (
-          <p className="mt-4 rounded-xl border border-red-900/50 bg-red-950/20 p-3 text-sm text-red-300">
+          <p className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-600">
             {error}
           </p>
         )}
@@ -209,8 +209,8 @@ const Applicants = () => {
             onClick={() => changeStatus("")}
             className={`rounded-xl px-4 py-2 text-xs font-semibold transition ${
               status === ""
-                ? "bg-lime-400 text-zinc-950"
-                : "border border-zinc-800 bg-zinc-900 text-zinc-400 hover:border-zinc-600 hover:text-white"
+                ? "bg-blue-600 text-white"
+                : "border border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
             }`}
           >
             All
@@ -221,8 +221,8 @@ const Applicants = () => {
               onClick={() => changeStatus(s)}
               className={`rounded-xl px-4 py-2 text-xs font-semibold transition ${
                 status === s
-                  ? "bg-lime-400 text-zinc-950"
-                  : "border border-zinc-800 bg-zinc-900 text-zinc-400 hover:border-zinc-600 hover:text-white"
+                  ? "bg-blue-600 text-white"
+                  : "border border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-900"
               }`}
             >
               {formatStatus(s)}
@@ -233,13 +233,13 @@ const Applicants = () => {
         {loading ? (
           <div className="mt-6 space-y-4">
             {[0, 1, 2].map((i) => (
-              <div key={i} className="h-40 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900/60" />
+              <div key={i} className="h-40 animate-pulse rounded-2xl border border-slate-200 bg-white" />
             ))}
           </div>
         ) : applications.length === 0 ? (
-          <div className="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-12 text-center">
-            <p className="text-lg font-semibold text-white">No applicants yet</p>
-            <p className="mt-1 text-sm text-zinc-400">
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-12 text-center">
+            <p className="text-lg font-semibold text-slate-900">No applicants yet</p>
+            <p className="mt-1 text-sm text-slate-500">
               {status ? "Try a different status filter." : "Share the job link to get applications."}
             </p>
           </div>
@@ -261,17 +261,17 @@ const Applicants = () => {
             <button
               disabled={page === 1}
               onClick={() => setPage(page - 1)}
-              className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 transition enabled:hover:border-zinc-600 disabled:opacity-40"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 transition enabled:hover:border-slate-300 disabled:opacity-40"
             >
               Prev
             </button>
-            <span className="text-sm text-zinc-500">
+            <span className="text-sm text-slate-400">
               Page {page} of {totalPages}
             </span>
             <button
               disabled={page === totalPages}
               onClick={() => setPage(page + 1)}
-              className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 transition enabled:hover:border-zinc-600 disabled:opacity-40"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 transition enabled:hover:border-slate-300 disabled:opacity-40"
             >
               Next
             </button>

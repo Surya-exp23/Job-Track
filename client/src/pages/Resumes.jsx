@@ -28,12 +28,12 @@ const SCORE_LABELS = {
 const ScoreBar = ({ label, value }) => (
   <div>
     <div className="flex items-center justify-between text-xs">
-      <span className="text-zinc-400">{label}</span>
-      <span className="font-semibold text-zinc-200">{value ?? "–"}</span>
+      <span className="text-slate-500">{label}</span>
+      <span className="font-semibold text-slate-700">{value ?? "–"}</span>
     </div>
-    <div className="mt-1 h-2 overflow-hidden rounded-full bg-zinc-800">
+    <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100">
       <div
-        className="h-full rounded-full bg-lime-400 transition-all"
+        className="h-full rounded-full bg-blue-600 transition-all"
         style={{ width: `${value || 0}%` }}
       />
     </div>
@@ -41,20 +41,20 @@ const ScoreBar = ({ label, value }) => (
 );
 
 const AnalysisResult = ({ analysis, onClose, onDelete, deleting }) => (
-  <div className="mt-6 rounded-2xl border border-lime-400/20 bg-zinc-900/80 p-6">
+  <div className="mt-6 rounded-2xl border border-blue-200 bg-white/90 p-6">
     <div className="flex items-start justify-between gap-4">
-      <h2 className="font-display text-lg font-bold text-white">AI analysis</h2>
+      <h2 className="font-display text-lg font-bold text-slate-900">AI analysis</h2>
       <div className="flex gap-2">
         <button
           onClick={onDelete}
           disabled={deleting}
-          className="rounded-lg px-3 py-1.5 text-xs text-zinc-500 transition hover:text-red-300 disabled:opacity-50"
+          className="rounded-lg px-3 py-1.5 text-xs text-slate-400 transition hover:text-red-600 disabled:opacity-50"
         >
           {deleting ? "Deleting…" : "Delete"}
         </button>
         <button
           onClick={onClose}
-          className="rounded-lg px-2 py-1 text-xl leading-none text-zinc-500 transition hover:bg-white/5 hover:text-white"
+          className="rounded-lg px-2 py-1 text-xl leading-none text-slate-400 transition hover:bg-slate-100 hover:text-slate-900"
           aria-label="Close"
         >
           ×
@@ -63,8 +63,8 @@ const AnalysisResult = ({ analysis, onClose, onDelete, deleting }) => (
     </div>
 
     <div className="mt-4 flex items-center gap-5">
-      <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-lime-400/10">
-        <span className="font-display text-2xl font-bold text-lime-300">
+      <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-blue-50">
+        <span className="font-display text-2xl font-bold text-blue-600">
           {analysis.overallScore}
         </span>
       </div>
@@ -77,10 +77,10 @@ const AnalysisResult = ({ analysis, onClose, onDelete, deleting }) => (
 
     {analysis.strengths?.length > 0 && (
       <div className="mt-5">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Strengths</h3>
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">Strengths</h3>
         <ul className="mt-2 space-y-1.5">
           {analysis.strengths.map((s, i) => (
-            <li key={i} className="text-sm text-zinc-300">· {s}</li>
+            <li key={i} className="text-sm text-slate-600">· {s}</li>
           ))}
         </ul>
       </div>
@@ -88,10 +88,10 @@ const AnalysisResult = ({ analysis, onClose, onDelete, deleting }) => (
 
     {analysis.weaknesses?.length > 0 && (
       <div className="mt-5">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Weaknesses</h3>
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">Weaknesses</h3>
         <ul className="mt-2 space-y-1.5">
           {analysis.weaknesses.map((s, i) => (
-            <li key={i} className="text-sm text-zinc-300">· {s}</li>
+            <li key={i} className="text-sm text-slate-600">· {s}</li>
           ))}
         </ul>
       </div>
@@ -99,10 +99,10 @@ const AnalysisResult = ({ analysis, onClose, onDelete, deleting }) => (
 
     {analysis.suggestions?.length > 0 && (
       <div className="mt-5">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Suggestions</h3>
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">Suggestions</h3>
         <ul className="mt-2 space-y-1.5">
           {analysis.suggestions.map((s, i) => (
-            <li key={i} className="text-sm text-lime-200/90">· {s}</li>
+            <li key={i} className="text-sm text-blue-600/90">· {s}</li>
           ))}
         </ul>
       </div>
@@ -227,20 +227,20 @@ const Resumes = () => {
     resumes.find((r) => r._id === String(resumeId))?.fileName || "Resume";
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-4 pb-16 pt-28 sm:px-6">
+    <div className="min-h-screen bg-slate-50 px-4 pb-16 pt-28 sm:px-6">
       <div className="mx-auto max-w-4xl">
-        <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">Resumes</h1>
-        <p className="mt-2 text-sm text-zinc-400">
+        <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">Resumes</h1>
+        <p className="mt-2 text-sm text-slate-500">
           Upload resumes, pick a default for quick applies, and get AI feedback.
         </p>
 
         {error && (
-          <p className="mt-4 rounded-xl border border-red-900/50 bg-red-950/20 p-3 text-sm text-red-300">
+          <p className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-600">
             {error}
           </p>
         )}
 
-        <div className="mt-6 rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/40 p-6 text-center">
+        <div className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-white/80 p-6 text-center">
           <input
             ref={fileRef}
             type="file"
@@ -249,7 +249,7 @@ const Resumes = () => {
             className="hidden"
             id="resume-upload"
           />
-          <p className="text-sm text-zinc-300">PDF, DOC or DOCX · max 5MB</p>
+          <p className="text-sm text-slate-600">PDF, DOC or DOCX · max 5MB</p>
           <div className="mx-auto mt-4 max-w-xs">
             <LoadingButton
               loading={uploading}
@@ -260,37 +260,37 @@ const Resumes = () => {
               Upload resume
             </LoadingButton>
           </div>
-          {uploadError && <p className="mt-3 text-sm text-red-400">{uploadError}</p>}
+          {uploadError && <p className="mt-3 text-sm text-red-600">{uploadError}</p>}
         </div>
 
         {loading ? (
           <div className="mt-6 space-y-4">
             {[0, 1].map((i) => (
-              <div key={i} className="h-28 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900/60" />
+              <div key={i} className="h-28 animate-pulse rounded-2xl border border-slate-200 bg-white" />
             ))}
           </div>
         ) : resumes.length === 0 ? (
-          <div className="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-12 text-center">
-            <p className="text-lg font-semibold text-white">No resumes yet</p>
-            <p className="mt-1 text-sm text-zinc-400">Upload your first resume to start applying.</p>
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-12 text-center">
+            <p className="text-lg font-semibold text-slate-900">No resumes yet</p>
+            <p className="mt-1 text-sm text-slate-500">Upload your first resume to start applying.</p>
           </div>
         ) : (
           <div className="mt-6 space-y-4">
             {resumes.map((r) => (
-              <div key={r._id} className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5">
+              <div key={r._id} className="rounded-2xl border border-slate-200 bg-white p-5">
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <p className="truncate font-display text-base font-bold text-white">
+                      <p className="truncate font-display text-base font-bold text-slate-900">
                         {r.fileName}
                       </p>
                       {r.isDefault && (
-                        <span className="shrink-0 rounded-lg bg-lime-400/15 px-2 py-0.5 text-xs font-semibold text-lime-300">
+                        <span className="shrink-0 rounded-lg bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-600">
                           Default
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 text-xs text-zinc-500">
+                    <p className="mt-1 text-xs text-slate-400">
                       {r.fileType} · {formatFileSize(r.fileSize)} · uploaded {formatDate(r.createdAt)}
                     </p>
                   </div>
@@ -298,7 +298,7 @@ const Resumes = () => {
                     href={r.fileUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="shrink-0 rounded-xl border border-zinc-700 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+                    className="shrink-0 rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
                   >
                     Open
                   </a>
@@ -308,7 +308,7 @@ const Resumes = () => {
                   {!r.isDefault && (
                     <button
                       onClick={() => handleSetDefault(r._id)}
-                      className="rounded-xl border border-zinc-700 px-4 py-2 text-xs font-semibold text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+                      className="rounded-xl border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
                     >
                       Set as default
                     </button>
@@ -316,13 +316,13 @@ const Resumes = () => {
                   <button
                     onClick={() => handleAnalyze(r._id)}
                     disabled={analyzingId !== null}
-                    className="rounded-xl bg-lime-400/15 px-4 py-2 text-xs font-bold text-lime-300 transition hover:bg-lime-400/25 disabled:opacity-50"
+                    className="rounded-xl bg-blue-50 px-4 py-2 text-xs font-bold text-blue-600 transition hover:bg-blue-600/25 disabled:opacity-50"
                   >
                     {analyzingId === r._id ? "Analyzing…" : "Analyze with AI"}
                   </button>
                   <button
                     onClick={() => handleDelete(r._id)}
-                    className="rounded-xl border border-zinc-800 px-4 py-2 text-xs font-semibold text-zinc-500 transition hover:border-red-500/50 hover:text-red-300"
+                    className="rounded-xl border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-400 transition hover:border-red-300 hover:text-red-600"
                   >
                     Delete
                   </button>
@@ -343,22 +343,22 @@ const Resumes = () => {
 
         {analyses.length > 0 && (
           <div className="mt-8">
-            <h2 className="font-display text-lg font-bold text-white">Previous analyses</h2>
+            <h2 className="font-display text-lg font-bold text-slate-900">Previous analyses</h2>
             <div className="mt-3 space-y-2">
               {analyses.map((a) => (
                 <button
                   key={a._id}
                   onClick={() => handleViewAnalysis(a._id)}
-                  className="flex w-full items-center justify-between gap-4 rounded-xl border border-zinc-800 bg-zinc-900/60 px-4 py-3 text-left transition hover:border-zinc-700"
+                  className="flex w-full items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left transition hover:border-slate-300"
                 >
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-white">
+                    <p className="truncate text-sm font-medium text-slate-900">
                       {resumeName(a.resumeId)}
                       {a.jobId ? " · job-specific" : ""}
                     </p>
-                    <p className="text-xs text-zinc-500">{formatDate(a.createdAt)}</p>
+                    <p className="text-xs text-slate-400">{formatDate(a.createdAt)}</p>
                   </div>
-                  <span className="shrink-0 rounded-lg bg-lime-400/10 px-2.5 py-1 font-display text-sm font-bold text-lime-300">
+                  <span className="shrink-0 rounded-lg bg-blue-50 px-2.5 py-1 font-display text-sm font-bold text-blue-600">
                     {a.overallScore}
                   </span>
                 </button>
@@ -367,16 +367,16 @@ const Resumes = () => {
           </div>
         )}
 
-        <div className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
-          <h2 className="text-sm font-bold text-white">Score against a specific job (optional)</h2>
-          <p className="mt-1 text-xs text-zinc-500">
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white/80 p-5">
+          <h2 className="text-sm font-bold text-slate-900">Score against a specific job (optional)</h2>
+          <p className="mt-1 text-xs text-slate-400">
             Paste a job ID before hitting "Analyze with AI" to get a match score for that role.
           </p>
           <input
             value={jobIdInput}
             onChange={(e) => setJobIdInput(e.target.value)}
             placeholder="Job ID — leave empty for a general review"
-            className="mt-3 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-lime-400"
+            className="mt-3 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-blue-600"
           />
         </div>
       </div>

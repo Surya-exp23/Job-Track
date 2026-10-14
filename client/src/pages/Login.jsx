@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import LoadingButton from "../components/loadingbutton.jsx";
 
 const inputClass =
-  "w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20";
+  "w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20";
 
 const Login = () => {
   const { login } = useAuth();
@@ -51,7 +51,7 @@ const Login = () => {
           Don't have an account?{" "}
           <Link
             to="/register"
-            className="font-semibold text-lime-400 hover:text-lime-300"
+            className="font-semibold text-blue-600 hover:text-blue-600"
           >
             Sign up
           </Link>
@@ -60,13 +60,13 @@ const Login = () => {
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         {error && (
-          <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-600">
             Email
           </label>
           <input
@@ -80,7 +80,7 @@ const Login = () => {
         </div>
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-600">
             Password
           </label>
           <input

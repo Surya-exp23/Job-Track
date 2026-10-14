@@ -104,7 +104,7 @@ const VerifyEmail = () => {
           Wrong email?{" "}
           <Link
             to="/register"
-            className="font-semibold text-lime-400 hover:text-lime-300"
+            className="font-semibold text-blue-600 hover:text-blue-600"
           >
             Start over
           </Link>
@@ -113,19 +113,19 @@ const VerifyEmail = () => {
     >
       <form onSubmit={handleSubmit} className="space-y-5">
         {notice && (
-          <div className="rounded-xl border border-lime-400/30 bg-lime-400/10 px-4 py-3 text-sm text-lime-300">
+          <div className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-600">
             {notice}
           </div>
         )}
         {error && (
-          <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
 
         {!location.state?.email && (
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+            <label className="mb-1.5 block text-sm font-medium text-slate-600">
               Email
             </label>
             <input
@@ -134,13 +134,13 @@ const VerifyEmail = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+              className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
             />
           </div>
         )}
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-600">
             Verification code
           </label>
           <div className="flex justify-between gap-2" onPaste={handlePaste}>
@@ -154,7 +154,7 @@ const VerifyEmail = () => {
                 value={digit}
                 onChange={(e) => handleChange(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
-                className="h-14 w-full rounded-xl border border-zinc-700 bg-zinc-950 text-center font-display text-xl font-bold text-white outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20"
+                className="h-14 w-full rounded-xl border border-slate-300 bg-slate-50 text-center font-display text-xl font-bold text-slate-900 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
               />
             ))}
           </div>
@@ -165,13 +165,13 @@ const VerifyEmail = () => {
         </LoadingButton>
 
 
-        <p className="text-center text-sm text-zinc-500">
+        <p className="text-center text-sm text-slate-400">
           No code?{" "}
           <button
             type="button"
             onClick={handleResend}
             disabled={cooldown > 0 || !email.trim()}
-            className="font-semibold text-lime-400 hover:text-lime-300 disabled:cursor-not-allowed disabled:text-zinc-600"
+            className="font-semibold text-blue-600 hover:text-blue-600 disabled:cursor-not-allowed disabled:text-slate-500"
           >
             {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend code"}
           </button>

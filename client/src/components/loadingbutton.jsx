@@ -9,7 +9,7 @@ const LoadingButton = ({
     type="submit"
     disabled={loading}
     aria-busy={loading}
-    className={`lb-btn${loading ? " lb-loading" : ""} w-full rounded-xl bg-lime-400 px-4 py-3 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.25)] transition hover:bg-lime-300 disabled:cursor-wait ${className}`}
+    className={`lb-btn${loading ? " lb-loading" : ""} w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-[0_0_24px_rgba(37,99,235,0.25)] transition hover:bg-blue-500 disabled:cursor-wait ${className}`}
     {...rest}
   >
     <span className="lb-label">

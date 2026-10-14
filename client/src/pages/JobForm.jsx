@@ -29,9 +29,9 @@ const emptyForm = {
 };
 
 const inputClass =
-  "w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-lime-400";
+  "w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-blue-600";
 
-const labelClass = "mb-1 block text-xs font-semibold uppercase tracking-wider text-zinc-500";
+const labelClass = "mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-400";
 
 const toDateInput = (value) => (value ? String(value).slice(0, 10) : "");
 
@@ -156,27 +156,27 @@ const JobForm = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 px-4 pb-16 pt-28 sm:px-6">
+      <div className="min-h-screen bg-slate-50 px-4 pb-16 pt-28 sm:px-6">
         <div className="mx-auto max-w-3xl animate-pulse space-y-4">
-          <div className="h-10 w-1/3 rounded bg-zinc-800" />
-          <div className="h-96 rounded-2xl border border-zinc-800 bg-zinc-900/60" />
+          <div className="h-10 w-1/3 rounded bg-slate-100" />
+          <div className="h-96 rounded-2xl border border-slate-200 bg-white" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-4 pb-16 pt-28 sm:px-6">
+    <div className="min-h-screen bg-slate-50 px-4 pb-16 pt-28 sm:px-6">
       <div className="mx-auto max-w-3xl">
-        <Link to="/my-jobs" className="text-sm text-zinc-400 transition hover:text-white">
+        <Link to="/my-jobs" className="text-sm text-slate-500 transition hover:text-slate-900">
           ← My jobs
         </Link>
-        <h1 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+        <h1 className="mt-4 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
           {isEdit ? "Edit job" : "Post a job"}
         </h1>
 
         {companies.length === 0 && !isEdit && (
-          <p className="mt-4 rounded-xl border border-amber-400/30 bg-amber-400/10 p-4 text-sm text-amber-200">
+          <p className="mt-4 rounded-xl border border-amber-400/30 bg-amber-400/10 p-4 text-sm text-amber-700">
             You need a company before posting a job.{" "}
             <Link to="/companies" className="font-semibold underline underline-offset-2">
               Create one here
@@ -186,8 +186,8 @@ const JobForm = () => {
         )}
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-6">
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
-            <h2 className="font-display text-base font-bold text-white">Role</h2>
+          <div className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h2 className="font-display text-base font-bold text-slate-900">Role</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label className={labelClass}>Job title *</label>
@@ -203,7 +203,7 @@ const JobForm = () => {
                 <select
                   value={form.companyId}
                   onChange={(e) => set("companyId", e.target.value)}
-                  className={`${inputClass} ${form.companyId ? "" : "text-zinc-600"}`}
+                  className={`${inputClass} ${form.companyId ? "" : "text-slate-500"}`}
                 >
                   <option value="">Select company</option>
                   {companies.map((c) => (
@@ -233,15 +233,15 @@ const JobForm = () => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
-            <h2 className="font-display text-base font-bold text-white">Details</h2>
+          <div className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h2 className="font-display text-base font-bold text-slate-900">Details</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <div>
                 <label className={labelClass}>Employment type *</label>
                 <select
                   value={form.employmentType}
                   onChange={(e) => set("employmentType", e.target.value)}
-                  className={`${inputClass} ${form.employmentType ? "" : "text-zinc-600"}`}
+                  className={`${inputClass} ${form.employmentType ? "" : "text-slate-500"}`}
                 >
                   <option value="">Select type</option>
                   {EMPLOYMENT_TYPES.map((t) => (
@@ -254,7 +254,7 @@ const JobForm = () => {
                 <select
                   value={form.remoteType}
                   onChange={(e) => set("remoteType", e.target.value)}
-                  className={`${inputClass} ${form.remoteType ? "" : "text-zinc-600"}`}
+                  className={`${inputClass} ${form.remoteType ? "" : "text-slate-500"}`}
                 >
                   <option value="">Select workplace</option>
                   {REMOTE_TYPES.map((t) => (
@@ -267,7 +267,7 @@ const JobForm = () => {
                 <select
                   value={form.experienceLevel}
                   onChange={(e) => set("experienceLevel", e.target.value)}
-                  className={`${inputClass} ${form.experienceLevel ? "" : "text-zinc-600"}`}
+                  className={`${inputClass} ${form.experienceLevel ? "" : "text-slate-500"}`}
                 >
                   <option value="">Select level</option>
                   {EXPERIENCE_LEVELS.map((t) => (
@@ -299,8 +299,8 @@ const JobForm = () => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
-            <h2 className="font-display text-base font-bold text-white">Compensation & expiry</h2>
+          <div className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h2 className="font-display text-base font-bold text-slate-900">Compensation & expiry</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
               <div>
                 <label className={labelClass}>Min salary (₹)</label>
@@ -348,7 +348,7 @@ const JobForm = () => {
             </div>
           </div>
 
-          {error && <p className="rounded-xl border border-red-900/50 bg-red-950/20 p-3 text-sm text-red-300">{error}</p>}
+          {error && <p className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-600">{error}</p>}
 
           <LoadingButton loading={saving} loadingText="Saving" className="w-full sm:w-auto sm:px-10">
             {isEdit ? "Save changes" : "Post job"}

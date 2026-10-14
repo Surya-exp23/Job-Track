@@ -20,9 +20,10 @@ const companies = [
 ];
 
 const LogoChip = ({ name, slug }) => (
-  <div className="flex shrink-0 items-center gap-3 rounded-xl border border-zinc-800/80 bg-zinc-900/50 px-6 py-4">
+  <div className="flex shrink-0 items-center gap-3 rounded-xl border border-slate-200 bg-white px-6 py-4">
     <img
-      src={`https://cdn.simpleicons.org/${slug}/white`}
+      src={`https://cdn.simpleicons.org/${slug}/0f172a`}
+
       alt={`${name} logo`}
       loading="lazy"
       className="h-6 w-6 object-contain"
@@ -30,7 +31,7 @@ const LogoChip = ({ name, slug }) => (
         e.currentTarget.style.display = "none";
       }}
     />
-    <span className="whitespace-nowrap font-display text-base font-bold text-zinc-200">
+    <span className="whitespace-nowrap font-display text-base font-bold text-slate-700">
       {name}
     </span>
   </div>
@@ -52,8 +53,8 @@ const MarqueeRow = ({ items, reverse = false }) => (
 
 const CompanyMarquee = () => (
   <div className="relative space-y-5">
-    <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-zinc-950 to-transparent" />
-    <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-zinc-950 to-transparent" />
+    <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-slate-50 to-transparent" />
+    <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-slate-50 to-transparent" />
     <MarqueeRow items={companies.slice(0, 9)} />
     <MarqueeRow items={companies.slice(9)} reverse />
   </div>

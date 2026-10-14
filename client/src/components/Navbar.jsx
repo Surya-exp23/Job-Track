@@ -79,8 +79,8 @@ const handleSamePageClick = (target) => (e) => {
       <nav
         className={`mx-auto flex h-14 max-w-5xl items-center justify-between rounded-2xl border px-4 transition-all duration-300 ${
           scrolled
-            ? "border-white/10 bg-zinc-950/70 shadow-2xl shadow-black/50 backdrop-blur-xl"
-            : "border-white/5 bg-zinc-900/40 shadow-lg shadow-black/20 backdrop-blur-md"
+            ? "border-slate-200 bg-slate-50/70 shadow-2xl shadow-slate-300 backdrop-blur-xl"
+            : "border-slate-200 bg-white/80 shadow-lg shadow-slate-200 backdrop-blur-md"
         }`}
       >
         <Link to={home} onClick={handleSamePageClick(home)} className="flex items-center gap-2.5">
@@ -89,7 +89,7 @@ const handleSamePageClick = (target) => (e) => {
             alt="JobTrack"
             className="h-8 w-8 rounded-lg object-cover"
           />
-          <span className="font-display text-lg font-bold tracking-tight text-white">
+          <span className="font-display text-lg font-bold tracking-tight text-slate-900">
             JobTrack
           </span>
         </Link>
@@ -99,13 +99,13 @@ const handleSamePageClick = (target) => (e) => {
             <>
               <Link
                 to="/login"
-                className="beam-hover rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition sm:px-4"
+                className="beam-hover rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition sm:px-4"
               >
                 Log in
               </Link>
               <Link
                 to="/register"
-                className="beam-hover rounded-xl bg-lime-400 px-3 py-2 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.35)] transition sm:px-4"
+                className="beam-hover rounded-xl bg-blue-600 px-3 py-2 text-sm font-bold text-white  transition sm:px-4"
               >
                 Get started
               </Link>
@@ -115,7 +115,7 @@ const handleSamePageClick = (target) => (e) => {
               <Link
                 to={dashboardLink}
                 onClick={handleSamePageClick(dashboardLink)}
-                className="rounded-xl px-3 py-2 text-sm font-medium text-zinc-300 transition hover:bg-white/5 hover:text-white sm:px-4"
+                className="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-4"
               >
                 Dashboard
               </Link>
@@ -124,27 +124,27 @@ const handleSamePageClick = (target) => (e) => {
                   onClick={() => setOpen((o) => !o)}
                   aria-label="Account menu"
                   aria-expanded={open}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-lime-400 font-display text-sm font-bold text-zinc-950 transition hover:brightness-110"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 font-display text-sm font-bold text-white transition hover:brightness-110"
                 >
                   {initial}
                 </button>
                 {open && (
-                  <div className="absolute right-0 top-12 w-52 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl shadow-black/60">
-                    <p className="truncate border-b border-zinc-800 px-4 py-3 text-xs text-zinc-500">
+                  <div className="absolute right-0 top-12 w-52 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-300">
+                    <p className="truncate border-b border-slate-200 px-4 py-3 text-xs text-slate-400">
                       {user.email}
                     </p>
                     {menuLinks.map((l) => (
                       <Link
                         key={l.to}
                         to={l.to}
-                        className="block px-4 py-2.5 text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white"
+                        className="block px-4 py-2.5 text-sm text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
                       >
                         {l.label}
                       </Link>
                     ))}
                     <button
                       onClick={handleLogout}
-                      className="block w-full border-t border-zinc-800 px-4 py-2.5 text-left text-sm text-red-400 transition hover:bg-white/5"
+                      className="block w-full border-t border-slate-200 px-4 py-2.5 text-left text-sm text-red-600 transition hover:bg-slate-100"
                     >
                       Log out
                     </button>

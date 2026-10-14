@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import LoadingButton from "../components/loadingbutton.jsx";
 
 const inputClass =
-  "w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/20";
+  "w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20";
 
 const Register = () => {
   const { register } = useAuth();
@@ -58,7 +58,7 @@ const Register = () => {
           Already have an account?{" "}
           <Link
             to="/login"
-            className="font-semibold text-lime-400 hover:text-lime-300"
+            className="font-semibold text-blue-600 hover:text-blue-600"
           >
             Log in
           </Link>
@@ -67,14 +67,14 @@ const Register = () => {
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         {error && (
-          <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+            <label className="mb-1.5 block text-sm font-medium text-slate-600">
               First name
             </label>
             <input
@@ -86,7 +86,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+            <label className="mb-1.5 block text-sm font-medium text-slate-600">
               Last name
             </label>
             <input
@@ -100,7 +100,7 @@ const Register = () => {
         </div>
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-600">
             Email
           </label>
           <input
@@ -114,7 +114,7 @@ const Register = () => {
         </div>
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-600">
             Password
           </label>
           <input
@@ -129,7 +129,7 @@ const Register = () => {
         </div>
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zinc-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-600">
             I am a
           </label>
           <div className="grid grid-cols-2 gap-3">
@@ -140,8 +140,8 @@ const Register = () => {
                 onClick={() => setForm((f) => ({ ...f, role }))}
                 className={`rounded-xl border px-4 py-3 text-sm font-semibold transition ${
                   form.role === role
-                    ? "border-lime-400 bg-lime-400/10 text-lime-300"
-                    : "border-zinc-700 bg-zinc-950 text-zinc-400 hover:border-zinc-500"
+                    ? "border-blue-600 bg-blue-50 text-blue-600"
+                    : "border-slate-300 bg-slate-50 text-slate-500 hover:border-slate-300"
                 }`}
               >
                 {role === "CANDIDATE" ? "Candidate" : "Recruiter"}

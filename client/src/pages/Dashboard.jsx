@@ -9,17 +9,17 @@ import { companiesApi } from "../api/companies";
 import { profileApi } from "../api/profile";
 
 const STATUS_STYLES = {
-  APPLIED: "bg-zinc-700/40 text-zinc-300",
-  SCREENING: "bg-amber-400/15 text-amber-300",
-  SHORTLISTED: "bg-sky-400/15 text-sky-300",
-  INTERVIEW: "bg-violet-400/15 text-violet-300",
-  SELECTED: "bg-lime-400/15 text-lime-300",
-  REJECTED: "bg-red-400/15 text-red-300",
-  WITHDRAWN: "bg-zinc-800 text-zinc-500",
-  Open: "bg-lime-400/15 text-lime-300",
-  Paused: "bg-amber-400/15 text-amber-300",
-  Closed: "bg-zinc-800 text-zinc-400",
-  Expired: "bg-red-400/15 text-red-300",
+  APPLIED: "bg-slate-200 text-slate-600",
+  SCREENING: "bg-amber-100 text-amber-700",
+  SHORTLISTED: "bg-sky-100 text-sky-700",
+  INTERVIEW: "bg-violet-100 text-violet-700",
+  SELECTED: "bg-blue-50 text-blue-600",
+  REJECTED: "bg-red-100 text-red-600",
+  WITHDRAWN: "bg-slate-100 text-slate-400",
+  Open: "bg-blue-50 text-blue-600",
+  Paused: "bg-amber-100 text-amber-700",
+  Closed: "bg-slate-100 text-slate-500",
+  Expired: "bg-red-100 text-red-600",
 };
 
 const formatStatus = (s) => s.charAt(0) + s.slice(1).toLowerCase();
@@ -27,22 +27,22 @@ const formatStatus = (s) => s.charAt(0) + s.slice(1).toLowerCase();
 const StatCard = ({ label, value, to }) => (
   <Link
     to={to}
-    className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 transition hover:border-zinc-700"
+    className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-slate-300"
   >
-    <p className="font-display text-3xl font-bold text-white">{value}</p>
-    <p className="mt-1 text-sm text-zinc-400">{label}</p>
+    <p className="font-display text-3xl font-bold text-slate-900">{value}</p>
+    <p className="mt-1 text-sm text-slate-500">{label}</p>
   </Link>
 );
 
 const QuickAction = ({ to, title, description }) => (
   <Link
     to={to}
-    className="group rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 transition hover:border-lime-400/40"
+    className="group rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-300"
   >
-    <h3 className="font-display text-base font-bold text-white group-hover:text-lime-300">
+    <h3 className="font-display text-base font-bold text-slate-900 group-hover:text-blue-600">
       {title}
     </h3>
-    <p className="mt-1 text-sm text-zinc-500">{description}</p>
+    <p className="mt-1 text-sm text-slate-400">{description}</p>
   </Link>
 );
 
@@ -56,26 +56,26 @@ const CandidateDashboard = ({ data }) => (
     </div>
 
     <div className="mt-8 grid gap-6 lg:grid-cols-2">
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-display text-base font-bold text-white">Recent applications</h2>
-          <Link to="/applications" className="text-xs font-semibold text-lime-300 hover:underline">
+          <h2 className="font-display text-base font-bold text-slate-900">Recent applications</h2>
+          <Link to="/applications" className="text-xs font-semibold text-blue-600 hover:underline">
             View all
           </Link>
         </div>
         {data.recentApplications.length === 0 ? (
-          <p className="text-sm text-zinc-500">
-            Nothing yet. <Link to="/jobs" className="text-lime-300 hover:underline">Browse jobs</Link> and apply.
+          <p className="text-sm text-slate-400">
+            Nothing yet. <Link to="/jobs" className="text-blue-600 hover:underline">Browse jobs</Link> and apply.
           </p>
         ) : (
           <div className="space-y-3">
             {data.recentApplications.map((a) => (
               <div key={a._id} className="flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-medium text-white">
+                  <p className="truncate text-sm font-medium text-slate-900">
                     {a.jobId?.title || "Job"}
                   </p>
-                  <p className="truncate text-xs text-zinc-500">{a.jobId?.companyId?.name || ""}</p>
+                  <p className="truncate text-xs text-slate-400">{a.jobId?.companyId?.name || ""}</p>
                 </div>
                 <span
                   className={`shrink-0 rounded-lg px-2 py-1 text-xs font-semibold ${STATUS_STYLES[a.status]}`}
@@ -118,16 +118,16 @@ const RecruiterDashboard = ({ data }) => (
     </div>
 
     <div className="mt-8 grid gap-6 lg:grid-cols-2">
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-display text-base font-bold text-white">Recent postings</h2>
-          <Link to="/my-jobs" className="text-xs font-semibold text-lime-300 hover:underline">
+          <h2 className="font-display text-base font-bold text-slate-900">Recent postings</h2>
+          <Link to="/my-jobs" className="text-xs font-semibold text-blue-600 hover:underline">
             View all
           </Link>
         </div>
         {data.recentJobs.length === 0 ? (
-          <p className="text-sm text-zinc-500">
-            Nothing posted yet. <Link to="/jobs/new" className="text-lime-300 hover:underline">Post your first job</Link>.
+          <p className="text-sm text-slate-400">
+            Nothing posted yet. <Link to="/jobs/new" className="text-blue-600 hover:underline">Post your first job</Link>.
           </p>
         ) : (
           <div className="space-y-3">
@@ -136,11 +136,11 @@ const RecruiterDashboard = ({ data }) => (
                 <div className="min-w-0">
                   <Link
                     to={`/jobs/${j._id}/applicants`}
-                    className="truncate text-sm font-medium text-white transition hover:text-lime-300"
+                    className="truncate text-sm font-medium text-slate-900 transition hover:text-blue-600"
                   >
                     {j.title}
                   </Link>
-                  <p className="truncate text-xs text-zinc-500">{j.companyId?.name || ""}</p>
+                  <p className="truncate text-xs text-slate-400">{j.companyId?.name || ""}</p>
                 </div>
                 <span
                   className={`shrink-0 rounded-lg px-2 py-1 text-xs font-semibold ${STATUS_STYLES[j.status] || STATUS_STYLES.Closed}`}
@@ -243,15 +243,15 @@ const Dashboard = () => {
   }, [fetchData]);
 
   return (
-    <div className="min-h-screen bg-zinc-950 font-sans text-white">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
-        <p className="text-sm font-bold uppercase tracking-[0.2em] text-lime-400">
+        <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
           {isRecruiter ? "Recruiter" : "Candidate"} command center
         </p>
         <h1 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Welcome{data?.firstName ? `, ${data.firstName}` : ""}.
         </h1>
-        <p className="mt-2 max-w-xl text-zinc-400">
+        <p className="mt-2 max-w-xl text-slate-500">
           {isRecruiter
             ? "Your postings, companies and applicant pipeline at a glance."
             : "Your applications, saved jobs and resume scores at a glance."}
@@ -260,7 +260,7 @@ const Dashboard = () => {
         {loading ? (
           <div className={`mt-8 grid grid-cols-2 gap-4 ${isRecruiter ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
             {(isRecruiter ? [0, 1, 2] : [0, 1, 2, 3]).map((i) => (
-              <div key={i} className="h-24 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900/60" />
+              <div key={i} className="h-24 animate-pulse rounded-2xl border border-slate-200 bg-white" />
             ))}
           </div>
         ) : (

@@ -43,7 +43,7 @@ const timeAgo = (value) => {
 };
 
 const inputClass =
-  "h-11 rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition focus:border-lime-400";
+  "h-11 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition focus:border-blue-600";
 
 
 
@@ -54,47 +54,47 @@ const JobCard = ({ job }) => {
   return (
     <Link
       to={`/jobs/${job._id}`}
-      className="group flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 transition hover:border-lime-400/40 hover:bg-zinc-900/90"
+      className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-300 hover:bg-white/90"
     >
       <div className="flex items-start gap-3">
         {company.logoUrl ? (
           <img src={company.logoUrl} alt="" className="h-11 w-11 rounded-xl object-cover" />
         ) : (
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime-400/10 font-display text-lg font-bold text-lime-300">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 font-display text-lg font-bold text-blue-600">
             {(company.name || job.title || "?")[0].toUpperCase()}
           </div>
         )}
         <div className="min-w-0">
-          <h3 className="truncate font-display text-base font-bold text-white group-hover:text-lime-300">
+          <h3 className="truncate font-display text-base font-bold text-slate-900 group-hover:text-blue-600">
             {job.title}
           </h3>
-          <p className="truncate text-sm text-zinc-400">{company.name || "Company"}</p>
+          <p className="truncate text-sm text-slate-500">{company.name || "Company"}</p>
         </div>
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-zinc-400">
+      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
         {job.location && <span>{job.location}</span>}
         {job.remoteType && <span>{job.remoteType}</span>}
         {job.employmentType && <span>{job.employmentType}</span>}
         {job.experienceLevel && <span>{job.experienceLevel}</span>}
       </div>
 
-      {salary && <p className="mt-2 text-sm font-semibold text-lime-300">{salary}</p>}
+      {salary && <p className="mt-2 text-sm font-semibold text-blue-600">{salary}</p>}
 
       {job.skills?.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
           {job.skills.slice(0, 4).map((s) => (
-            <span key={s} className="rounded-lg bg-zinc-800 px-2 py-1 text-xs text-zinc-300">
+            <span key={s} className="rounded-lg bg-slate-100 px-2 py-1 text-xs text-slate-600">
               {s}
             </span>
           ))}
           {job.skills.length > 4 && (
-            <span className="px-1 py-1 text-xs text-zinc-500">+{job.skills.length - 4}</span>
+            <span className="px-1 py-1 text-xs text-slate-400">+{job.skills.length - 4}</span>
           )}
         </div>
       )}
 
-      <p className="mt-3 text-xs text-zinc-500">{timeAgo(job.postedAt || job.createdAt)}</p>
+      <p className="mt-3 text-xs text-slate-400">{timeAgo(job.postedAt || job.createdAt)}</p>
     </Link>
   );
 };
@@ -131,13 +131,13 @@ const FilterSelect = ({ value, onChange, placeholder, options }) => {
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={`flex h-11 w-full cursor-pointer items-center justify-between gap-2 rounded-xl border bg-zinc-900 px-3 text-sm outline-none transition hover:border-zinc-600 ${
-          open ? "border-lime-400" : "border-zinc-800"
-        } ${value ? "text-zinc-100" : "text-zinc-400"}`}
+        className={`flex h-11 w-full cursor-pointer items-center justify-between gap-2 rounded-xl border bg-white px-3 text-sm outline-none transition hover:border-slate-300 ${
+          open ? "border-blue-600" : "border-slate-200"
+        } ${value ? "text-slate-800" : "text-slate-500"}`}
       >
         <span className="truncate">{value || placeholder}</span>
         <svg
-          className={`h-4 w-4 shrink-0 text-zinc-500 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 shrink-0 text-slate-400 transition-transform ${open ? "rotate-180" : ""}`}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -148,12 +148,12 @@ const FilterSelect = ({ value, onChange, placeholder, options }) => {
       </button>
 
       {open && (
-        <div className="absolute left-0 right-0 top-full z-30 mt-2 overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 shadow-2xl shadow-black/60">
+        <div className="absolute left-0 right-0 top-full z-30 mt-2 overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl shadow-slate-300">
           <button
             type="button"
             onClick={() => pick("")}
-            className={`block w-full px-3 py-2.5 text-left text-sm transition hover:bg-white/5 ${
-              !value ? "font-semibold text-lime-300" : "text-zinc-400"
+            className={`block w-full px-3 py-2.5 text-left text-sm transition hover:bg-slate-100 ${
+              !value ? "font-semibold text-blue-600" : "text-slate-500"
             }`}
           >
             {placeholder}
@@ -163,8 +163,8 @@ const FilterSelect = ({ value, onChange, placeholder, options }) => {
               key={t}
               type="button"
               onClick={() => pick(t)}
-              className={`block w-full px-3 py-2.5 text-left text-sm transition hover:bg-white/5 ${
-                value === t ? "font-semibold text-lime-300" : "text-zinc-200"
+              className={`block w-full px-3 py-2.5 text-left text-sm transition hover:bg-slate-100 ${
+                value === t ? "font-semibold text-blue-600" : "text-slate-700"
               }`}
             >
               {t}
@@ -180,12 +180,12 @@ const FilterSelect = ({ value, onChange, placeholder, options }) => {
 const EmptyState = ({ title, message, actionLabel, onAction }) => (
   <div className="mx-auto mt-8 flex max-w-2xl flex-col items-center justify-center gap-8 p-8 sm:flex-row sm:gap-12">
     <div className="text-center sm:text-left">
-      <p className="font-display text-xl font-bold text-white">{title}</p>
-      <p className="mt-2 text-sm text-zinc-400">{message}</p>
+      <p className="font-display text-xl font-bold text-slate-900">{title}</p>
+      <p className="mt-2 text-sm text-slate-500">{message}</p>
       {actionLabel && (
         <button
           onClick={onAction}
-          className="mt-5 rounded-xl bg-lime-400 px-6 py-2 text-sm font-bold text-zinc-950 transition hover:brightness-110"
+          className="mt-5 rounded-xl bg-blue-600 px-6 py-2 text-sm font-bold text-white transition hover:brightness-110"
         >
           {actionLabel}
         </button>
@@ -275,30 +275,30 @@ const Jobs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-4 pb-16 pt-28 sm:px-6">
+    <div className="min-h-screen bg-slate-50 px-4 pb-16 pt-28 sm:px-6">
       <div className="mx-auto max-w-6xl">
         {isCandidate ? (
           <section className="grid items-center gap-10 py-6 lg:grid-cols-2 lg:py-10">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-lime-400">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
                 Welcome back{firstName ? `, ${firstName}` : ""}
               </p>
-              <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                 Your dream role is
                 <br />
-                <span className="text-lime-300">one application</span> away.
+                <span className="text-blue-600">one application</span> away.
               </h1>
-              <p className="mt-4 max-w-md text-zinc-400">
+              <p className="mt-4 max-w-md text-slate-500">
                 Search open roles below, track every application, and let AI sharpen your resume.
               </p>
-              <p className="mt-4 text-sm text-zinc-500">
+              <p className="mt-4 text-sm text-slate-400">
                 {pagination
                   ? `${pagination.total} open role${pagination.total === 1 ? "" : "s"} right now`
                   : "Finding open roles…"}
               </p>
             </div>
             <div className="relative mx-auto w-full max-w-56 sm:max-w-64">
-              <div className="absolute inset-6 rounded-full bg-lime-400/15 blur-3xl" />
+              <div className="absolute inset-6 rounded-full bg-blue-50 blur-3xl" />
               <img
                 src={roboHero}
                 alt="JobTrack robo taking off"
@@ -309,8 +309,8 @@ const Jobs = () => {
           </section>
         ) : (
           <>
-            <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">Find your next role</h1>
-            <p className="mt-2 text-sm text-zinc-400">
+            <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">Find your next role</h1>
+            <p className="mt-2 text-sm text-slate-500">
               {pagination ? `${pagination.total} open role${pagination.total === 1 ? "" : "s"}` : "Browse open roles"}
             </p>
           </>
@@ -318,7 +318,7 @@ const Jobs = () => {
 
         <form
           onSubmit={handleSearch}
-          className="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4 backdrop-blur"
+          className="mt-6 rounded-2xl border border-slate-200 bg-white p-4 backdrop-blur"
         >
           <div className="flex flex-col gap-3 sm:flex-row">
             <input
@@ -335,7 +335,7 @@ const Jobs = () => {
             />
             <button
               type="submit"
-              className="beam-hover h-10 rounded-xl bg-lime-400 px-8 text-sm font-bold text-zinc-950 cursor-pointer"
+              className="beam-hover h-10 rounded-xl bg-blue-600 px-8 text-sm font-bold text-white cursor-pointer"
             >
               Search
             </button>
@@ -381,7 +381,7 @@ const Jobs = () => {
             <button
               type="button"
               onClick={clearFilters}
-              className="mt-3 text-xs text-zinc-400 underline-offset-2 hover:text-white hover:underline"
+              className="mt-3 text-xs text-slate-500 underline-offset-2 hover:text-slate-900 hover:underline"
             >
               Clear all filters
             </button>
@@ -391,7 +391,7 @@ const Jobs = () => {
         {loading ? (
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="h-44 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900/60" />
+              <div key={i} className="h-44 animate-pulse rounded-2xl border border-slate-200 bg-white" />
             ))}
           </div>
         ) : error ? (
@@ -425,7 +425,7 @@ const Jobs = () => {
             <button
               disabled={page === 1}
               onClick={() => setPage(page - 1)}
-              className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 transition enabled:hover:border-zinc-600 disabled:opacity-40"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 transition enabled:hover:border-slate-300 disabled:opacity-40"
             >
               Prev
             </button>
@@ -435,8 +435,8 @@ const Jobs = () => {
                 onClick={() => setPage(n)}
                 className={`h-10 w-10 rounded-xl text-sm font-medium transition ${
                   n === page
-                    ? "bg-lime-400 font-bold text-zinc-950"
-                    : "border border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-600"
+                    ? "bg-blue-600 font-bold text-white"
+                    : "border border-slate-200 bg-white text-slate-600 hover:border-slate-300"
                 }`}
               >
                 {n}
@@ -445,7 +445,7 @@ const Jobs = () => {
             <button
               disabled={page === totalPages}
               onClick={() => setPage(page + 1)}
-              className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 transition enabled:hover:border-zinc-600 disabled:opacity-40"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 transition enabled:hover:border-slate-300 disabled:opacity-40"
             >
               Next
             </button>

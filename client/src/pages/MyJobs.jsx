@@ -6,10 +6,10 @@ import { useAuth } from "../context/AuthContext";
 const PAGE_SIZE = 10;
 
 const STATUS_STYLES = {
-  Open: "bg-lime-400/15 text-lime-300",
-  Paused: "bg-amber-400/15 text-amber-300",
-  Closed: "bg-zinc-800 text-zinc-400",
-  Expired: "bg-red-400/15 text-red-300",
+  Open: "bg-blue-50 text-blue-600",
+  Paused: "bg-amber-100 text-amber-700",
+  Closed: "bg-slate-100 text-slate-500",
+  Expired: "bg-red-100 text-red-600",
 };
 
 const formatSalary = (salary) => {
@@ -75,25 +75,25 @@ const MyJobs = () => {
   const totalPages = pagination?.totalPages || 0;
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-4 pb-16 pt-28 sm:px-6">
+    <div className="min-h-screen bg-slate-50 px-4 pb-16 pt-28 sm:px-6">
       <div className="mx-auto max-w-5xl">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">My jobs</h1>
-            <p className="mt-2 text-sm text-zinc-400">
+            <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">My jobs</h1>
+            <p className="mt-2 text-sm text-slate-500">
               {pagination ? `${pagination.total} posting${pagination.total === 1 ? "" : "s"}` : "Roles you've posted"}
             </p>
           </div>
           <Link
             to="/jobs/new"
-            className="beam-hover shrink-0 rounded-xl bg-lime-400 px-5 py-2.5 text-sm font-bold text-zinc-950 shadow-[0_0_24px_rgba(163,230,53,0.25)]"
+            className="beam-hover shrink-0 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-[0_0_24px_rgba(37,99,235,0.25)]"
           >
             Post a job
           </Link>
         </div>
 
         {error && (
-          <p className="mt-4 rounded-xl border border-red-900/50 bg-red-950/20 p-3 text-sm text-red-300">
+          <p className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-600">
             {error}
           </p>
         )}
@@ -101,16 +101,16 @@ const MyJobs = () => {
         {loading ? (
           <div className="mt-6 space-y-4">
             {[0, 1, 2].map((i) => (
-              <div key={i} className="h-28 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900/60" />
+              <div key={i} className="h-28 animate-pulse rounded-2xl border border-slate-200 bg-white" />
             ))}
           </div>
         ) : jobs.length === 0 ? (
-          <div className="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-12 text-center">
-            <p className="text-lg font-semibold text-white">No jobs posted yet</p>
-            <p className="mt-1 text-sm text-zinc-400">Post your first role to start receiving applications.</p>
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-12 text-center">
+            <p className="text-lg font-semibold text-slate-900">No jobs posted yet</p>
+            <p className="mt-1 text-sm text-slate-500">Post your first role to start receiving applications.</p>
             <Link
               to="/jobs/new"
-              className="mt-4 inline-block rounded-xl bg-lime-400 px-6 py-2 text-sm font-bold text-zinc-950"
+              className="mt-4 inline-block rounded-xl bg-blue-600 px-6 py-2 text-sm font-bold text-white"
             >
               Post a job
             </Link>
@@ -121,16 +121,16 @@ const MyJobs = () => {
               const company = job.companyId || {};
               const salary = formatSalary(job.salary);
               return (
-                <div key={job._id} className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5">
+                <div key={job._id} className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <Link
                         to={`/jobs/${job._id}`}
-                        className="font-display text-base font-bold text-white transition hover:text-lime-300"
+                        className="font-display text-base font-bold text-slate-900 transition hover:text-blue-600"
                       >
                         {job.title}
                       </Link>
-                      <p className="mt-0.5 truncate text-sm text-zinc-400">
+                      <p className="mt-0.5 truncate text-sm text-slate-500">
                         {company.name || ""}
                         {salary ? ` · ${salary}` : ""}
                       </p>
@@ -144,13 +144,13 @@ const MyJobs = () => {
                   <div className="mt-4 flex flex-wrap gap-2">
                     <Link
                       to={`/jobs/${job._id}/applicants`}
-                      className="rounded-xl bg-lime-400/15 px-4 py-2 text-xs font-bold text-lime-300 transition hover:bg-lime-400/25"
+                      className="rounded-xl bg-blue-50 px-4 py-2 text-xs font-bold text-blue-600 transition hover:bg-blue-600/25"
                     >
                       Applicants
                     </Link>
                     <Link
                       to={`/jobs/${job._id}/edit`}
-                      className="rounded-xl border border-zinc-700 px-4 py-2 text-xs font-semibold text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+                      className="rounded-xl border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
                     >
                       Edit
                     </Link>
@@ -159,8 +159,8 @@ const MyJobs = () => {
                       disabled={deletingId === job._id}
                       className={`rounded-xl border px-4 py-2 text-xs font-semibold transition disabled:opacity-50 ${
                         confirmId === job._id
-                          ? "border-red-500/50 bg-red-500/10 text-red-300 hover:bg-red-500/20"
-                          : "border-zinc-800 text-zinc-500 hover:border-red-500/50 hover:text-red-300"
+                          ? "border-red-300 bg-red-50 text-red-600 hover:bg-red-100"
+                          : "border-slate-200 text-slate-400 hover:border-red-300 hover:text-red-600"
                       }`}
                     >
                       {deletingId === job._id
@@ -172,7 +172,7 @@ const MyJobs = () => {
                     {confirmId === job._id && deletingId !== job._id && (
                       <button
                         onClick={() => setConfirmId(null)}
-                        className="rounded-xl px-3 py-2 text-xs text-zinc-500 transition hover:text-white"
+                        className="rounded-xl px-3 py-2 text-xs text-slate-400 transition hover:text-slate-900"
                       >
                         Cancel
                       </button>
@@ -189,17 +189,17 @@ const MyJobs = () => {
             <button
               disabled={page === 1}
               onClick={() => setPage(page - 1)}
-              className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 transition enabled:hover:border-zinc-600 disabled:opacity-40"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 transition enabled:hover:border-slate-300 disabled:opacity-40"
             >
               Prev
             </button>
-            <span className="text-sm text-zinc-500">
+            <span className="text-sm text-slate-400">
               Page {page} of {totalPages}
             </span>
             <button
               disabled={page === totalPages}
               onClick={() => setPage(page + 1)}
-              className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-300 transition enabled:hover:border-zinc-600 disabled:opacity-40"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 transition enabled:hover:border-slate-300 disabled:opacity-40"
             >
               Next
             </button>

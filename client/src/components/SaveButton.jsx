@@ -51,8 +51,8 @@ const SaveButton = ({ jobId, className = "" }) => {
       disabled={busy}
       className={`rounded-xl border px-4 py-3 text-sm font-semibold transition disabled:opacity-50 ${
         saved
-          ? "border-lime-400/50 bg-lime-400/10 text-lime-300 hover:bg-lime-400/15"
-          : "border-zinc-700 text-zinc-300 hover:border-zinc-500 hover:text-white"
+          ? "border-blue-300 bg-blue-50 text-blue-600 hover:bg-blue-50"
+          : "border-slate-300 text-slate-600 hover:border-slate-300 hover:text-slate-900"
       } ${className}`}
     >
       {busy ? "…" : saved ? "Saved" : "Save job"}
