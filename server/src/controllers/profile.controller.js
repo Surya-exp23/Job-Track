@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { Profile } from "../models/profile.model.js";
-import { Company } from "../models/company.model.js";
+import { Profile } from "../../../Real projects/JobTrack/server/src/models/profile.model.js";
+import { Company } from "../../../Real projects/JobTrack/server/src/models/company.model.js";
 
 const STRING_FIELDS = [
   "firstName",

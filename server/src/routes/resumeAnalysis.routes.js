@@ -1,11 +1,11 @@
 import express from "express";
-import { protect, restrictTo } from "../middlewares/auth.middleware.js";
+import { protect, restrictTo } from "../../../Real projects/JobTrack/server/src/middlewares/auth.middleware.js";
 import {
   createAnalysis,
   getMyAnalyses,
   getAnalysis,
   deleteAnalysis,
-} from "../controllers/resumeAnalysis.controller.js";
+} from "../../../Real projects/JobTrack/server/src/controllers/resumeAnalysis.controller.js";
 
 const router = express.Router();
 

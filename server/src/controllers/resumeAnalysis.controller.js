@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import { Resume } from "../models/resume.model.js";
-import { ResumeAnalysis } from "../models/resumeAnalysis.model.js";
-import { Job } from "../models/Jobs.model.js";
-import { extractResumeText } from "../utils/resumeText.js";
-import { analyzeResume } from "../utils/groq.js";
+import { Resume } from "../../../Real projects/JobTrack/server/src/models/resume.model.js";
+import { ResumeAnalysis } from "../../../Real projects/JobTrack/server/src/models/resumeAnalysis.model.js";
+import { Job } from "../../../Real projects/JobTrack/server/src/models/Jobs.model.js";
+import { extractResumeText } from "../../../Real projects/JobTrack/server/src/utils/resumeText.js";
+import { analyzeResume } from "../../../Real projects/JobTrack/server/src/utils/groq.js";
 
 const createAnalysis = async (req, res, next) => {
   const { resumeId, jobId } = req.body;

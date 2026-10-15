@@ -1,4 +1,4 @@
-import { Notification } from "../models/notification.model.js";
+import { Notification } from "../../../Real projects/JobTrack/server/src/models/notification.model.js";
 
 const getNotifications = async (req, res, next) => {
   try {

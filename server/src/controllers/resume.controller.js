@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import path from "path";
-import { Resume } from "../models/resume.model.js";
-import { Application } from "../models/application.model.js";
-import { EXT_TO_TYPE } from "../middlewares/upload.middleware.js";
-import { getCloudinary, uploadBuffer } from "../utils/cloudinary.js";
+import { Resume } from "../../../Real projects/JobTrack/server/src/models/resume.model.js";
+import { Application } from "../../../Real projects/JobTrack/server/src/models/application.model.js";
+import { EXT_TO_TYPE } from "../../../Real projects/JobTrack/server/src/middlewares/upload.middleware.js";
+import { getCloudinary, uploadBuffer } from "../../../Real projects/JobTrack/server/src/utils/cloudinary.js";
 
 const uploadResume = async (req, res, next) => {
   let uploaded = null;

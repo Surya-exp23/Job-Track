@@ -1,17 +1,17 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from "cookie-parser";
-import authRoutes from "./routes/auth.routes.js";
-import companyRoutes from "./routes/company.routes.js";
-import jobRoutes from "./routes/job.routes.js";
-import applicationRoutes from "./routes/application.routes.js";
-import savedJobRoutes from "./routes/savedJob.routes.js";
-import profileRoutes from "./routes/profile.routes.js";
-import resumeAnalysisRoutes from "./routes/resumeAnalysis.routes.js";
-import resumeRoutes from "./routes/resume.routes.js";
-import { requestLogger } from "./middlewares/requestLogger.js";
-import { errorHandler } from "./middlewares/errorHandler.js";
-import notificationRoutes from "./routes/notification.routes.js";
+import authRoutes from "../../Real projects/JobTrack/server/src/routes/auth.routes.js";
+import companyRoutes from "../../Real projects/JobTrack/server/src/routes/company.routes.js";
+import jobRoutes from "../../Real projects/JobTrack/server/src/routes/job.routes.js";
+import applicationRoutes from "../../Real projects/JobTrack/server/src/routes/application.routes.js";
+import savedJobRoutes from "../../Real projects/JobTrack/server/src/routes/savedJob.routes.js";
+import profileRoutes from "../../Real projects/JobTrack/server/src/routes/profile.routes.js";
+import resumeAnalysisRoutes from "../../Real projects/JobTrack/server/src/routes/resumeAnalysis.routes.js";
+import resumeRoutes from "../../Real projects/JobTrack/server/src/routes/resume.routes.js";
+import { requestLogger } from "../../Real projects/JobTrack/server/src/middlewares/requestLogger.js";
+import { errorHandler } from "../../Real projects/JobTrack/server/src/middlewares/errorHandler.js";
+import notificationRoutes from "../../Real projects/JobTrack/server/src/routes/notification.routes.js";
 
 const app = express();
 

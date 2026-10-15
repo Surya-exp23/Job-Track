@@ -5,9 +5,9 @@ import {
   getResume,
   setDefaultResume,
   deleteResume,
-} from "../controllers/resume.controller.js";
-import { protect, restrictTo } from "../middlewares/auth.middleware.js";
-import { uploadResumeFile } from "../middlewares/upload.middleware.js";
+} from "../../../Real projects/JobTrack/server/src/controllers/resume.controller.js";
+import { protect, restrictTo } from "../../../Real projects/JobTrack/server/src/middlewares/auth.middleware.js";
+import { uploadResumeFile } from "../../../Real projects/JobTrack/server/src/middlewares/upload.middleware.js";
 
 const router = express.Router();
 

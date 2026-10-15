@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import { Application } from "../models/application.model.js";
-import { Job } from "../models/Jobs.model.js";
-import { Resume } from "../models/resume.model.js";
-import { notifyUser } from "../utils/notify.js";
-import { Profile } from "../models/profile.model.js";
+import { Application } from "../../../Real projects/JobTrack/server/src/models/application.model.js";
+import { Job } from "../../../Real projects/JobTrack/server/src/models/Jobs.model.js";
+import { Resume } from "../../../Real projects/JobTrack/server/src/models/resume.model.js";
+import { notifyUser } from "../../../Real projects/JobTrack/server/src/utils/notify.js";
+import { Profile } from "../../../Real projects/JobTrack/server/src/models/profile.model.js";
 
 const ALL_STATUSES = [
   "APPLIED",

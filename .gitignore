@@ -3,3 +3,4 @@
 tests
 *logs
 *.log
+*fix-import-casing.js

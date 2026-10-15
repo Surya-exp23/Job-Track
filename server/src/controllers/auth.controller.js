@@ -1,10 +1,10 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
-import { User } from "../models/user.model.js";
-import { Profile } from "../models/profile.model.js";
-import { RefreshToken } from "../models/refreshToken.js";
-import { sendVerificationOtp } from "../utils/sendEmail.js";
+import { User } from "../../../Real projects/JobTrack/server/src/models/user.model.js";
+import { Profile } from "../../../Real projects/JobTrack/server/src/models/profile.model.js";
+import { RefreshToken } from "../../../Real projects/JobTrack/server/src/models/refreshToken.js";
+import { sendVerificationOtp } from "../../../Real projects/JobTrack/server/src/utils/sendEmail.js";
 
 const ACCESS_TOKEN_EXPIRES_IN = "15m";
 const REFRESH_TOKEN_EXPIRES_IN_DAYS = 7;

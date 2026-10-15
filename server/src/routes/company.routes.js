@@ -5,8 +5,8 @@ import {
   getCompany,
   updateCompany,
   deleteCompany,
-} from "../controllers/company.controller.js";
-import { protect, restrictTo } from "../middlewares/auth.middleware.js";
+} from "../../../Real projects/JobTrack/server/src/controllers/company.controller.js";
+import { protect, restrictTo } from "../../../Real projects/JobTrack/server/src/middlewares/auth.middleware.js";
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { Company } from '../models/company.model.js';;
-import  {Job } from '../models/Jobs.model.js';
+import { Company } from '../../../Real projects/JobTrack/server/src/models/company.model.js';;
+import  {Job } from '../../../Real projects/JobTrack/server/src/models/Jobs.model.js';
 
 const COMPANY_SIZES=[
     "1-10",
