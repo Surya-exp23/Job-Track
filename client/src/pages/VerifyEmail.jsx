@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
 import { useAuth } from "../context/AuthContext";
-import LoadingButton from "../components/loadingbutton.jsx";
+import LoadingButton from "../components/LoadingButton";
 
 const RESEND_COOLDOWN = 60;
 
