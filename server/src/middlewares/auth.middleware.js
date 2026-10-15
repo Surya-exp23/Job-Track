@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { User } from "../../../Real projects/JobTrack/server/src/models/user.model.js";
+import { User } from "../models/user.model.js";
 
 const protect = async (req, res, next) => {
   try {

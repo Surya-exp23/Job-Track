@@ -6,8 +6,8 @@ import {
   getApplication,
   updateApplicationStatus,
   withdrawApplication,
-} from "../../../Real projects/JobTrack/server/src/controllers/application.controller.js";
-import { protect, restrictTo } from "../../../Real projects/JobTrack/server/src/middlewares/auth.middleware.js";
+} from "../controllers/application.controller.js";
+import { protect, restrictTo } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 

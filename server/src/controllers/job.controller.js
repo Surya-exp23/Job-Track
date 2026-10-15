@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { Job } from "../../../Real projects/JobTrack/server/src/models/Jobs.model.js"
-import {Company} from "../../../Real projects/JobTrack/server/src/models/company.model.js";
-import {Application} from "../../../Real projects/JobTrack/server/src/models/application.model.js";
-import {SavedJob} from "../../../Real projects/JobTrack/server/src/models/savedJob.model.js";
+import { Job } from "../models/Jobs.model.js"
+import {Company} from "../models/company.model.js";
+import {Application} from "../models/application.model.js";
+import {SavedJob} from "../models/savedJob.model.js";
 
 const REMOTE_TYPES = ["Remote", "On-site", "Hybrid"];
 const EMPLOYMENT_TYPES = ["Full-time", "Part-time", "Contract", "Internship"];

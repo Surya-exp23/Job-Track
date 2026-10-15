@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { SavedJob } from "../../../Real projects/JobTrack/server/src/models/savedJob.model.js";
-import { Job } from "../../../Real projects/JobTrack/server/src/models/Jobs.model.js";
+import { SavedJob } from "../models/savedJob.model.js";
+import { Job } from "../models/Jobs.model.js";
 
 const saveJob = async (req, res, next) => {
   try {

@@ -4,3 +4,4 @@ tests
 *logs
 *.log
 *fix-import-casing.js
+fix-absolute-imports.js

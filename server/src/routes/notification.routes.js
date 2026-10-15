@@ -3,8 +3,8 @@ import {
   getNotifications,
   markAsRead,
   markAllAsRead,
-} from "../../../Real projects/JobTrack/server/src/controllers/notification.controller.js";
-import { protect } from "../../../Real projects/JobTrack/server/src/middlewares/auth.middleware.js";
+} from "../controllers/notification.controller.js";
+import { protect } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 

@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
-import connectDB from "../../Real projects/JobTrack/server/src/config/db.js";
+import connectDB from "./config/db.js";
 import dns from "dns";
 
 dotenv.config({ path: "./.env" });
 
-const { app } = await import("../../Real projects/JobTrack/server/src/app.js");
+const { app } = await import("./app.js");
 
 dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
